@@ -3,7 +3,7 @@ import { motion } from "motion/react";
 import { AnimatePresence, motion as fm } from "framer-motion";
 import clsx from "clsx";
 import svgPaths from "./svg-0iqufmq4sg";
-import { ButtonRipple, GlowButton, HoverCard, Video3D, TextReveal } from "../components/animations";
+import { HoverCard, Video3D } from "../components/animations";
 import imgImage99 from "figma:asset/4dde9044c371aef63f51c1b77f36e25f8321c0b6.png";
 import imgEllipse5567 from "figma:asset/8b9b10595cadc9f4f69d31afb5b0127b73ef6efd.png";
 import imgImage135 from "../assets/样机new.png";

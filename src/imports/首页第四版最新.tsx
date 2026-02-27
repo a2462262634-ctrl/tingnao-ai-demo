@@ -14,6 +14,9 @@ import img3 from "figma:asset/acc3348aeecaffa88a7df12fbad6945ca27a3ad6.png";
 import img4 from "figma:asset/686ca0795e96f80058bf0bdc3985b67e20b4fd18.png";
 import img5 from "figma:asset/27358daec38e46f90f81785b3f16c2d210f359a7.png";
 import imgImage112 from "../assets/辅助学习.png";
+import imgMeeting from "../assets/会议记录.png";
+import imgSales from "../assets/销售通话.png";
+import imgMultiDevice from "../assets/多端1.png";
 import imgImage20 from "figma:asset/a04f4a80310edd6b390f3eda949ed410d8e38b8f.png";
 import imgImage43 from "figma:asset/d61b776c7a548b6aa297e5c783354db157834759.png";
 import imgImage119 from "figma:asset/20acfa273bdbbbcdff1b2151c26bb8384452a4ac.png";
@@ -22,6 +25,7 @@ import imgImage136 from "figma:asset/d8c3d8df2337fa0c01da30b422b3f54ab5ebd476.pn
 import imgImage45 from "figma:asset/eaf857922a37f5fa0901126672ef6d3b3b4120d7.png";
 import imgImage46 from "figma:asset/f266a447fc86466c02a3550b1bfc38f1a18e50f2.png";
 import imgImage47 from "figma:asset/ac3eefcfa5a3049d8ed9230860d9c21735c52590.png";
+import imgContentCreation from "../assets/内容创作.png";
 import imgImage48 from "figma:asset/11eba6f21d8dc97aa4c1daa89bb862d4d81aeb82.png";
 type BackgroundImage2Props = {
   text: string;
@@ -32,12 +36,17 @@ function BackgroundImage2({ children, text, additionalClassNames = "" }: React.P
   return (
     <motion.button
       type="button"
-      className="h-[40px] relative rounded-[10.37px] shrink-0 overflow-visible bg-transparent"
+      className="h-[40px] relative rounded-[8px] shrink-0 overflow-visible bg-transparent"
       whileHover="hover"
+      whileTap="tap"
       initial="initial"
+      variants={{
+        hover: { scale: 1.05, transition: { duration: 0.2 } },
+        tap: { scale: 0.9, transition: { duration: 0.1 } }
+      }}
     >
       <motion.div
-        className="absolute inset-[-1.5px] rounded-[12px] z-0"
+        className="absolute inset-[-1.5px] rounded-[8px] z-0"
         style={{
           background: "linear-gradient(90deg, #0f67fe 0%, #2ad1f8 25%, #667eea 50%, #4facfe 75%, #0f67fe 100%)",
           backgroundSize: "200% 100%",
@@ -54,18 +63,39 @@ function BackgroundImage2({ children, text, additionalClassNames = "" }: React.P
       <motion.div
         className="absolute inset-[-15px] rounded-[24px] z-[-1]"
         style={{
-          background: "radial-gradient(circle, rgba(102, 126, 234, 0.4), transparent 70%)",
+          background: "radial-gradient(circle, rgba(102, 126, 234, 0.6), transparent 70%)",
           filter: "blur(15px)",
         }}
         variants={{
-          initial: { opacity: 0 },
-          hover: { opacity: 1 }
+          initial: { opacity: 0, scale: 1 },
+          hover: { opacity: 1, scale: 1.2, transition: { duration: 0.2 } },
+          tap: { opacity: 0.8, scale: 0.95, transition: { duration: 0.1 } }
         }}
-        transition={{ duration: 0.3 }}
       />
-      <div className={clsx("relative bg-[#191f33] rounded-[10.37px] h-full flex items-center justify-center px-[20px] py-[5px] z-10 overflow-hidden", additionalClassNames)}>
+      <motion.div
+        className="absolute inset-0 rounded-[8px] z-[1] pointer-events-none"
+        style={{ background: "rgba(44, 111, 251, 0.5)" }}
+        variants={{
+          initial: { scale: 0.8, opacity: 0 },
+          tap: { 
+            scale: 1.8, 
+            opacity: 0,
+            transition: { duration: 0.25, ease: "easeOut" }
+          }
+        }}
+        transition={{ duration: 0 }}
+      />
+      <motion.div 
+        className={clsx("relative rounded-[8px] h-full flex items-center justify-center px-[20px] py-[5px] z-10 overflow-hidden", additionalClassNames)}
+        style={{ backgroundColor: "#191f33" }}
+        variants={{
+          hover: { backgroundColor: "#0f67fe" },
+          tap: { backgroundColor: "#0f67fe" }
+        }}
+        transition={{ duration: 0.2 }}
+      >
         <motion.div
-          className="absolute inset-0 rounded-[10.37px] pointer-events-none"
+          className="absolute inset-0 rounded-[8px] pointer-events-none"
           style={{
             background: "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.2) 50%, transparent 100%)",
           }}
@@ -80,7 +110,7 @@ function BackgroundImage2({ children, text, additionalClassNames = "" }: React.P
           }}
         />
         <p className="font-['HarmonyOS_Sans_SC:Medium',sans-serif] leading-[1.5] not-italic relative shrink-0 text-[#f8f8f8] text-[16px] text-center z-10">{text}</p>
-      </div>
+      </motion.div>
     </motion.button>
   );
 }
@@ -113,9 +143,9 @@ type BackgroundImage9Props = {
 
 function BackgroundImage9({ children, additionalClassNames = "" }: React.PropsWithChildren<BackgroundImage9Props>) {
   return (
-    <HoverCard className={clsx("bg-white col-1 justify-self-stretch relative rounded-[12px] self-stretch shrink-0 overflow-visible hover:z-10", additionalClassNames)} hoverY={-6}>
+    <HoverCard className={clsx("bg-white col-1 justify-self-stretch relative rounded-[12px] self-stretch shrink-0 overflow-visible hover:z-10 shadow-[0px_3px_32px_0px_rgba(0,0,0,0.05)]", additionalClassNames)} hoverY={-6}>
       <BackgroundImage10 additionalClassNames="overflow-clip rounded-[inherit]">{children}</BackgroundImage10>
-      <div aria-hidden="true" className="absolute border border-[#e9e9e9] border-solid inset-0 pointer-events-none rounded-[12px] shadow-[0px_3px_32px_0px_rgba(0,0,0,0.05)]" />
+      <div aria-hidden="true" className="absolute border border-[#e9e9e9] border-solid inset-0 pointer-events-none rounded-[12px]" />
     </HoverCard>
   );
 }
@@ -188,21 +218,21 @@ function ScanCodeBackgroundImage() {
   return (
     <div className="relative shrink-0 size-[28px]">
       <VectorBackgroundImage additionalClassNames="inset-[12.5%_68.75%_68.75%_12.5%]">
-        <path d={svgPaths.p1223f600} id="Vector" stroke="var(--stroke-0, #75859D)" strokeLinecap="square" strokeWidth="2.33333" />
+        <path d={svgPaths.p1223f600} id="Vector" stroke="var(--stroke-0, #75859D)" strokeLinecap="square" strokeWidth="1.5" />
       </VectorBackgroundImage>
       <VectorBackgroundImage additionalClassNames="inset-[68.75%_68.75%_12.5%_12.5%]">
-        <path d={svgPaths.ped5c880} id="Vector" stroke="var(--stroke-0, #75859D)" strokeLinecap="square" strokeWidth="2.33333" />
+        <path d={svgPaths.ped5c880} id="Vector" stroke="var(--stroke-0, #75859D)" strokeLinecap="square" strokeWidth="1.5" />
       </VectorBackgroundImage>
       <VectorBackgroundImage additionalClassNames="inset-[68.75%_12.5%_12.5%_68.75%]">
-        <path d={svgPaths.p166dd000} id="Vector" stroke="var(--stroke-0, #75859D)" strokeLinecap="square" strokeWidth="2.33333" />
+        <path d={svgPaths.p166dd000} id="Vector" stroke="var(--stroke-0, #75859D)" strokeLinecap="square" strokeWidth="1.5" />
       </VectorBackgroundImage>
       <VectorBackgroundImage additionalClassNames="inset-[12.5%_12.5%_68.75%_68.75%]">
-        <path d={svgPaths.p124955c0} id="Vector" stroke="var(--stroke-0, #75859D)" strokeLinecap="square" strokeWidth="2.33333" />
+        <path d={svgPaths.p124955c0} id="Vector" stroke="var(--stroke-0, #75859D)" strokeLinecap="square" strokeWidth="1.5" />
       </VectorBackgroundImage>
       <div className="absolute bottom-1/2 left-[20.84%] right-[20.83%] top-1/2" data-name="Vector">
         <div className="absolute inset-[-1.17px_-7.14%]">
           <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 18.6667 2.33333">
-            <path d="M1.16667 1.16667H17.5" id="Vector" stroke="var(--stroke-0, #75859D)" strokeLinecap="square" strokeWidth="2.33333" />
+            <path d="M1.16667 1.16667H17.5" id="Vector" stroke="var(--stroke-0, #75859D)" strokeLinecap="square" strokeWidth="1.5" />
           </svg>
         </div>
       </div>
@@ -212,7 +242,7 @@ function ScanCodeBackgroundImage() {
 
 function ImageBackgroundImage1() {
   return (
-    <BackgroundImage11 additionalClassNames="h-[67.205px]">
+    <BackgroundImage11 additionalClassNames="h-[58px]">
       <img alt="" className="absolute h-[185.05%] left-[-175.6%] max-w-none top-[-44.95%] w-[516.46%]" src={imgImage43} />
     </BackgroundImage11>
   );
@@ -235,19 +265,29 @@ function BackgroundImageAndText7({ text }: BackgroundImageAndText7Props) {
     </div>
   );
 }
+function ImageBackgroundImage({ src }: { src: string }) {
+  return (
+    <div className="relative rounded-[112.084px] shrink-0 size-[51.559px] overflow-hidden">
+      <img alt="" className="absolute inset-0 max-w-none object-cover size-full" src={src} />
+    </div>
+  );
+}
 type BackgroundImage5Props = {
   text: string;
   text1: string;
+  title: string;
+  avatar: string;
 };
 
-function BackgroundImage5({ text, text1 }: BackgroundImage5Props) {
+function BackgroundImage5({ text, text1, title, avatar }: BackgroundImage5Props) {
   return (
     <BackgroundImage7>
       <div className="content-stretch flex gap-[13.45px] items-center relative shrink-0">
-        <ImageBackgroundImage />
+        <ImageBackgroundImage src={avatar} />
         <div className="content-stretch flex flex-col gap-[4px] items-start leading-[1.5] not-italic relative shrink-0">
-          <p className="font-['HarmonyOS_Sans_SC:Medium',sans-serif] relative shrink-0 text-[#191f33] text-[20px] text-center">{"每周都节省10小时"}</p>
+          <p className="font-['HarmonyOS_Sans_SC:Medium',sans-serif] relative shrink-0 text-[#191f33] text-[20px] text-center">{title}</p>
           <div className="content-stretch flex font-['HarmonyOS_Sans_SC:Regular',sans-serif] gap-[11.208px] items-center relative shrink-0 text-[17.933px] text-white">
+            <p className="relative shrink-0">{"🌟"}</p>
             <p className="relative shrink-0">{"🌟"}</p>
             <p className="relative shrink-0">{"🌟"}</p>
             <p className="relative shrink-0">{"🌟"}</p>
@@ -261,13 +301,6 @@ function BackgroundImage5({ text, text1 }: BackgroundImage5Props) {
   );
 }
 
-function ImageBackgroundImage() {
-  return (
-    <div className="relative rounded-[112.084px] shrink-0 size-[51.559px]">
-      <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[112.084px] size-full" src={imgImage20} />
-    </div>
-  );
-}
 type BackgroundImageAndText6Props = {
   text: string;
 };
@@ -395,7 +428,7 @@ function Frame1940699700VectorBackgroundImage2({ additionalClassNames = "" }: Fr
     <div className={clsx("absolute", additionalClassNames)}>
       <div className="absolute inset-[-8.16%_-0.5px]">
         <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 1 7.125">
-          <path d="M0.5 6.625V0.5" id="Vector" stroke="var(--stroke-0, #4E4E4E)" strokeWidth="0.8" strokeLinecap="square" />
+          <path d="M0.5 6.625V0.5" id="Vector" stroke="var(--stroke-0, #4E4E4E)" strokeWidth="0.5" strokeLinecap="square" />
         </svg>
       </div>
     </div>
@@ -410,7 +443,7 @@ function Frame1940699700VectorBackgroundImage1({ additionalClassNames = "" }: Fr
     <div className={clsx("absolute", additionalClassNames)}>
       <div className="absolute inset-[-0.5px_-4.29%]">
         <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 12.6667 1">
-          <path d="M0.5 0.5H12.1667" id="Vector" stroke="var(--stroke-0, #4E4E4E)" strokeWidth="0.8" strokeLinecap="square" />
+          <path d="M0.5 0.5H12.1667" id="Vector" stroke="var(--stroke-0, #4E4E4E)" strokeWidth="0.5" strokeLinecap="square" />
         </svg>
       </div>
     </div>
@@ -436,7 +469,7 @@ type Frame1940699698VectorBackgroundImageProps = {
 function Frame1940699698VectorBackgroundImage({ additionalClassNames = "" }: Frame1940699698VectorBackgroundImageProps) {
   return (
     <BackgroundImage8 additionalClassNames={additionalClassNames}>
-      <path d={svgPaths.pcbda00} id="Vector" stroke="var(--stroke-0, #4E4E4E)" strokeWidth="0.8" />
+      <path d={svgPaths.pcbda00} id="Vector" stroke="var(--stroke-0, #4E4E4E)" strokeWidth="0.5" />
     </BackgroundImage8>
   );
 }
@@ -459,12 +492,17 @@ function BackgroundImage() {
   return (
     <motion.button
       type="button"
-      className="h-[54px] relative rounded-[14px] shrink-0 overflow-visible bg-transparent"
+      className="h-[54px] relative rounded-[12px] shrink-0 overflow-visible bg-transparent"
       whileHover="hover"
+      whileTap="tap"
       initial="initial"
+      variants={{
+        hover: { scale: 1.05, transition: { duration: 0.2 } },
+        tap: { scale: 0.9, transition: { duration: 0.1 } }
+      }}
     >
       <motion.div
-        className="absolute inset-[-1.5px] rounded-[16px] z-0"
+        className="absolute inset-[-1.5px] rounded-[12px] z-0"
         style={{
           background: "linear-gradient(90deg, #0f67fe 0%, #2ad1f8 25%, #667eea 50%, #4facfe 75%, #0f67fe 100%)",
           backgroundSize: "200% 100%",
@@ -481,18 +519,39 @@ function BackgroundImage() {
       <motion.div
         className="absolute inset-[-20px] rounded-[34px] z-[-1]"
         style={{
-          background: "radial-gradient(circle, rgba(102, 126, 234, 0.4), transparent 70%)",
+          background: "radial-gradient(circle, rgba(102, 126, 234, 0.6), transparent 70%)",
           filter: "blur(20px)",
         }}
         variants={{
-          initial: { opacity: 0 },
-          hover: { opacity: 1 }
+          initial: { opacity: 0, scale: 1 },
+          hover: { opacity: 1, scale: 1.2, transition: { duration: 0.2 } },
+          tap: { opacity: 0.8, scale: 0.95, transition: { duration: 0.1 } }
         }}
-        transition={{ duration: 0.3 }}
       />
-      <div className="relative bg-[#191f33] rounded-[14px] h-full flex items-center justify-center px-[32px] py-[7px] z-10 overflow-hidden">
+      <motion.div
+        className="absolute inset-0 rounded-[12px] z-[1] pointer-events-none"
+        style={{ background: "rgba(44, 111, 251, 0.5)" }}
+        variants={{
+          initial: { scale: 0.8, opacity: 0 },
+          tap: { 
+            scale: 1.8, 
+            opacity: 0,
+            transition: { duration: 0.25, ease: "easeOut" }
+          }
+        }}
+        transition={{ duration: 0 }}
+      />
+      <motion.div 
+        className="relative rounded-[12px] h-full flex items-center justify-center px-[32px] py-[7px] z-10 overflow-hidden"
+        style={{ backgroundColor: "#191f33" }}
+        variants={{
+          hover: { backgroundColor: "#0f67fe" },
+          tap: { backgroundColor: "#0f67fe" }
+        }}
+        transition={{ duration: 0.2 }}
+      >
         <motion.div
-          className="absolute inset-0 rounded-[14px] pointer-events-none"
+          className="absolute inset-0 rounded-[12px] pointer-events-none"
           style={{
             background: "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.2) 50%, transparent 100%)",
           }}
@@ -507,7 +566,7 @@ function BackgroundImage() {
           }}
         />
         <p className="font-['HarmonyOS_Sans_SC:Medium',sans-serif] leading-[1.5] not-italic relative shrink-0 text-[#f8f8f8] text-[24px] text-center z-10">{"免费使用"}</p>
-      </div>
+      </motion.div>
     </motion.button>
   );
 }
@@ -532,48 +591,92 @@ function ScrollReveal({ children, className, delay = 0, direction = "up" }: { ch
   );
 }
 
+const reviewsData = [
+  {
+    review: "\u201c会议记录从2小时缩短到5分钟，关键信息一目了然，团队协作效率提升了3倍\u201d",
+    user: "产品经理·张明",
+    title: "会议效率翻倍",
+    avatar: "https://i.pravatar.cc/150?img=1"
+  },
+  {
+    review: "\u201c上课再也不用手忙脚乱记笔记了，课后复习有AI总结的重点，学习效率提高太多了\u201d",
+    user: "大学生·李悦",
+    title: "学习更轻松",
+    avatar: "https://i.pravatar.cc/150?img=2"
+  },
+  {
+    review: "\u201c客户沟通内容自动整理，跟进提醒及时，成单率提升了40%，真的太好用了\u201d",
+    user: "销售总监·王强",
+    title: "每周节省10小时",
+    avatar: "https://i.pravatar.cc/150?img=3"
+  },
+  {
+    review: "\u201c灵感随时记录，AI帮我整理成文章大纲，创作效率提升5倍，再也不怕灵感溜走\u201d",
+    user: "自媒体博主·陈思",
+    title: "灵感不错过",
+    avatar: "https://i.pravatar.cc/150?img=4"
+  },
+  {
+    review: "\u201c多人会议也能准确识别每个人的发言，会后整理纪要只需3分钟，太省心了\u201d",
+    user: "行政主管·刘芳",
+    title: "多人会议无忧",
+    avatar: "https://i.pravatar.cc/150?img=5"
+  },
+  {
+    review: "\u201c专业术语识别很准确，方言也能转写，团队成员都在用，强烈推荐\u201d",
+    user: "技术总监·赵伟",
+    title: "准确率高达98%",
+    avatar: "https://i.pravatar.cc/150?img=6"
+  },
+  {
+    review: "\u201c培训课程自动转写和总结，新员工学习资料整理效率提升了10倍\u201d",
+    user: "培训经理·周敏",
+    title: "培训资料速成",
+    avatar: "https://i.pravatar.cc/150?img=7"
+  },
+  {
+    review: "\u201c采访录音一键转文字，AI提炼核心观点，稿件产出速度快了一倍\u201d",
+    user: "记者·林浩",
+    title: "稿件产出提速",
+    avatar: "https://i.pravatar.cc/150?img=8"
+  },
+  {
+    review: "\u201c手机录音，电脑查看，云端同步，随时随地都能访问，工作流程太顺畅了\u201d",
+    user: "咨询顾问·孙丽",
+    title: "多端同步超方便",
+    avatar: "https://i.pravatar.cc/150?img=9"
+  },
+  {
+    review: "\u201c研讨会内容自动归档成知识库，随时可以搜索查阅，知识管理太高效了\u201d",
+    user: "研究员·吴刚",
+    title: "知识管理高效",
+    avatar: "https://i.pravatar.cc/150?img=10"
+  },
+  {
+    review: "\u201c电话会议实时转写，异地团队协作更顺畅，沟通成本降低了50%\u201d",
+    user: "项目经理·郑洁",
+    title: "远程协作顺畅",
+    avatar: "https://i.pravatar.cc/150?img=11"
+  },
+  {
+    review: "\u201c对着录音直接提问，AI秒回答，查找信息比翻记录快太多了\u201d",
+    user: "律师·黄磊",
+    title: "AI问答太智能",
+    avatar: "https://i.pravatar.cc/150?img=12"
+  },
+];
+
 const ReviewRowContent = () => (
   <>
-    <BackgroundImage5 text="“以前我周五的大部分时间都花在处理琐事上。现在这些都自动化了”" text1="行业销售·李四" />
-    <BackgroundImage5 text="“以前我周五的大部分时间都花在处理琐事上。现在这些都自动化了”" text1="行业销售·李四" />
-    <BackgroundImage7>
-      <div className="content-stretch flex gap-[13.45px] items-center relative shrink-0">
-        <ImageBackgroundImage />
-        <BackgroundImageAndText7 text="每周都节省10小时" />
-      </div>
-      <p className="font-['HarmonyOS_Sans_SC:Regular',sans-serif] leading-[1.5] min-w-full not-italic relative shrink-0 text-[#B2B2B2] text-[16px] w-[min-content] whitespace-pre-wrap">“以前我周五的大部分时间都花在处理琐事上。现在这些都自动化了”</p>
-      <p className="font-['HarmonyOS_Sans_SC:Regular',sans-serif] leading-[1.5] not-italic relative shrink-0 text-[15.692px] text-[rgba(71,85,105,0.5)] text-center">行业销售·李四</p>
-    </BackgroundImage7>
-    <BackgroundImage5 text={"\u201c以前我周五的大部分时间都花在处理琐事上。现在这些都自动化了\u201d"} text1="行业销售·李四" />
-    <BackgroundImage5 text={"\u201c以前我周五的大部分时间都花在处理琐事上。现在这些都自动化了\u201d"} text1="行业销售·李四" />
-    <BackgroundImage7>
-      <div className="content-stretch flex gap-[13.45px] items-center relative shrink-0">
-        <ImageBackgroundImage />
-        <BackgroundImageAndText7 text="每周都节省10小时" />
-      </div>
-      <p className="font-['HarmonyOS_Sans_SC:Regular',sans-serif] leading-[1.5] min-w-full not-italic relative shrink-0 text-[#B2B2B2] text-[16px] w-[min-content] whitespace-pre-wrap">{"\u201c以前我周五的大部分时间都花在处理琐事上。现在这些都自动化了\u201d"}</p>
-      <p className="font-['HarmonyOS_Sans_SC:Regular',sans-serif] leading-[1.5] not-italic relative shrink-0 text-[15.692px] text-[rgba(71,85,105,0.5)] text-center">行业销售·李四</p>
-    </BackgroundImage7>
-    <BackgroundImage5 text="“以前我周五的大部分时间都花在处理琐事上。现在这些都自动化了”" text1="行业销售·李四" />
-    <BackgroundImage5 text="“以前我周五的大部分时间都花在处理琐事上。现在这些都自动化了”" text1="行业销售·李四" />
-    <BackgroundImage7>
-      <div className="content-stretch flex gap-[13.45px] items-center relative shrink-0">
-        <ImageBackgroundImage />
-        <BackgroundImageAndText7 text="每周都节省10小时" />
-      </div>
-      <p className="font-['HarmonyOS_Sans_SC:Regular',sans-serif] leading-[1.5] min-w-full not-italic relative shrink-0 text-[#B2B2B2] text-[16px] w-[min-content] whitespace-pre-wrap">“以前我周五的大部分时间都花在处理琐事上。现在这些都自动化了”</p>
-      <p className="font-['HarmonyOS_Sans_SC:Regular',sans-serif] leading-[1.5] not-italic relative shrink-0 text-[15.692px] text-[rgba(71,85,105,0.5)] text-center">行业销售·李四</p>
-    </BackgroundImage7>
-    <BackgroundImage5 text={"\u201c以前我周五的大部分时间都花在处理琐事上。现在这些都自动化了\u201d"} text1="行业销售·李四" />
-    <BackgroundImage5 text={"\u201c以前我周五的大部分时间都花在处理琐事上。现在这些都自动化了\u201d"} text1="行业销售·李四" />
-    <BackgroundImage7>
-      <div className="content-stretch flex gap-[13.45px] items-center relative shrink-0">
-        <ImageBackgroundImage />
-        <BackgroundImageAndText7 text="每周都节省10小时" />
-      </div>
-      <p className="font-['HarmonyOS_Sans_SC:Regular',sans-serif] leading-[1.5] min-w-full not-italic relative shrink-0 text-[#B2B2B2] text-[16px] w-[min-content] whitespace-pre-wrap">{"\u201c以前我周五的大部分时间都花在处理琐事上。现在这些都自动化了\u201d"}</p>
-      <p className="font-['HarmonyOS_Sans_SC:Regular',sans-serif] leading-[1.5] not-italic relative shrink-0 text-[15.692px] text-[rgba(71,85,105,0.5)] text-center">行业销售·李四</p>
-    </BackgroundImage7>
+    {reviewsData.map((item, index) => (
+      <BackgroundImage5
+        key={index}
+        text={item.review}
+        text1={item.user}
+        title={item.title}
+        avatar={item.avatar}
+      />
+    ))}
   </>
 );
 
@@ -591,24 +694,28 @@ export default function Component() {
       title: "会议记录",
       description: "实时记录会议内容并自动转写，快速生成会议纪要和待办事项",
       features: ["实时转写", "自动纪要", "团队协作", "知识管理"],
+      image: imgMeeting,
     },
     {
       label: "学习辅助",
       title: "学习辅助",
       description: "课堂与自学内容自动转写与总结，重点清晰，复习更高效",
       features: ["课堂转写", "重点提炼", "知识回顾", "资料整理"],
+      image: imgImage112,
     },
     {
       label: "销售通话",
       title: "销售通话",
       description: "通话内容自动沉淀，关键信息可追溯，提升跟进效率",
       features: ["通话转写", "客户要点", "机会跟进", "话术复盘"],
+      image: imgSales,
     },
     {
       label: "内容创作",
       title: "内容创作",
       description: "灵感与素材自动整理，快速生成大纲，创作更顺畅",
       features: ["灵感记录", "结构大纲", "素材归档", "内容整理"],
+      image: imgContentCreation,
     },
   ];
   const currentScenario = scenarios[activeScenario];
@@ -956,26 +1063,26 @@ export default function Component() {
                           <div className="absolute bottom-[41.67%] left-[8.34%] right-3/4 top-[41.67%]" data-name="Vector">
                             <div className="absolute inset-[-21.43%]">
                               <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 3.33333 3.33333">
-                                <path d={svgPaths.p17bf6b00} id="Vector" stroke="var(--stroke-0, #4E4E4E)" strokeWidth="0.8" />
+                                <path d={svgPaths.p17bf6b00} id="Vector" stroke="var(--stroke-0, #4E4E4E)" strokeWidth="0.5" />
                               </svg>
                             </div>
                           </div>
                           <BackgroundImage8 additionalClassNames="inset-[8.33%_8.33%_83.33%_83.34%]">
-                            <path d={svgPaths.p1c918170} id="Vector" stroke="var(--stroke-0, #4E4E4E)" strokeWidth="0.8" />
+                            <path d={svgPaths.p1c918170} id="Vector" stroke="var(--stroke-0, #4E4E4E)" strokeWidth="0.5" />
                           </BackgroundImage8>
                           <Frame1940699698VectorBackgroundImage additionalClassNames="inset-[45.83%_8.33%_45.83%_83.34%]" />
                           <Frame1940699698VectorBackgroundImage additionalClassNames="inset-[83.33%_8.33%_8.33%_83.34%]" />
                           <div className="absolute inset-[12.5%_33.34%_12.5%_41.66%]" data-name="Vector">
                             <div className="absolute inset-[-4.76%_-14.29%]">
                               <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 4.5 11.5">
-                                <path d={svgPaths.p31b4ea00} id="Vector" stroke="var(--stroke-0, #4E4E4E)" strokeWidth="0.8" strokeLinecap="square" />
+                                <path d={svgPaths.p31b4ea00} id="Vector" stroke="var(--stroke-0, #4E4E4E)" strokeWidth="0.5" strokeLinecap="square" />
                               </svg>
                             </div>
                           </div>
                           <div className="absolute bottom-1/2 left-1/4 right-[33.33%] top-1/2" data-name="Vector">
                             <div className="absolute inset-[-0.5px_-8.57%]">
                               <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 6.83333 1">
-                                <path d="M0.5 0.5H6.33333" id="Vector" stroke="var(--stroke-0, #4E4E4E)" strokeWidth="0.8" strokeLinecap="square" />
+                                <path d="M0.5 0.5H6.33333" id="Vector" stroke="var(--stroke-0, #4E4E4E)" strokeWidth="0.5" strokeLinecap="square" />
                               </svg>
                             </div>
                           </div>
@@ -989,14 +1096,14 @@ export default function Component() {
                           <div className="absolute inset-[12.5%]" data-name="Vector">
                             <div className="absolute inset-[-4.76%]">
                               <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 11.5 11.5">
-                                <path clipRule="evenodd" d={svgPaths.p3e3c4200} fillRule="evenodd" id="Vector" stroke="var(--stroke-0, #4E4E4E)" strokeWidth="0.8" />
+                                <path clipRule="evenodd" d={svgPaths.p3e3c4200} fillRule="evenodd" id="Vector" stroke="var(--stroke-0, #4E4E4E)" strokeWidth="0.5" />
                               </svg>
                             </div>
                           </div>
                           <div className="absolute inset-[37.5%_31.25%]" data-name="Vector">
                             <div className="absolute inset-[-20.2%_-13.47%]">
                               <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 6.66421 4.91421">
-                                <path d={svgPaths.p219900c0} id="Vector" stroke="var(--stroke-0, #4E4E4E)" strokeWidth="0.8" strokeLinecap="square" />
+                                <path d={svgPaths.p219900c0} id="Vector" stroke="var(--stroke-0, #4E4E4E)" strokeWidth="0.5" strokeLinecap="square" />
                               </svg>
                             </div>
                           </div>
@@ -1010,7 +1117,7 @@ export default function Component() {
                           <div className="absolute inset-[16.67%_8.33%_16.67%_8.34%]" data-name="Vector">
                             <div className="absolute inset-[-5.36%_-4.29%]">
                               <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 12.6667 10.3333">
-                                <path d={svgPaths.p584b200} id="Vector" stroke="var(--stroke-0, #4E4E4E)" strokeWidth="0.8" />
+                                <path d={svgPaths.p584b200} id="Vector" stroke="var(--stroke-0, #4E4E4E)" strokeWidth="0.5" />
                               </svg>
                             </div>
                           </div>
@@ -1029,7 +1136,7 @@ export default function Component() {
                           <div className="absolute inset-[83.33%_18.75%_16.67%_18.75%]" data-name="Vector">
                             <div className="absolute inset-[-0.5px_-5.71%]">
                               <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 9.75 1">
-                                <path d="M0.5 0.5H9.25" id="Vector" stroke="var(--stroke-0, #4E4E4E)" strokeWidth="0.8" strokeLinecap="square" />
+                                <path d="M0.5 0.5H9.25" id="Vector" stroke="var(--stroke-0, #4E4E4E)" strokeWidth="0.5" strokeLinecap="square" />
                               </svg>
                             </div>
                           </div>
@@ -1103,14 +1210,14 @@ export default function Component() {
                       <div className="absolute inset-[12.5%]" data-name="Vector">
                         <div className="absolute inset-[-4.33%]">
                           <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 12.55 12.55">
-                            <path clipRule="evenodd" d={svgPaths.p33694f00} fillRule="evenodd" id="Vector" stroke="var(--stroke-0, #4E4E4E)" strokeWidth="0.8" />
+                            <path clipRule="evenodd" d={svgPaths.p33694f00} fillRule="evenodd" id="Vector" stroke="var(--stroke-0, #4E4E4E)" strokeWidth="0.5" />
                           </svg>
                         </div>
                       </div>
                       <div className="absolute inset-[37.5%_31.25%]" data-name="Vector">
                         <div className="absolute inset-[-18.37%_-12.24%]">
                           <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 7.18921 5.26421">
-                            <path d={svgPaths.p363af280} id="Vector" stroke="var(--stroke-0, #4E4E4E)" strokeWidth="0.8" strokeLinecap="square" />
+                            <path d={svgPaths.p363af280} id="Vector" stroke="var(--stroke-0, #4E4E4E)" strokeWidth="0.5" strokeLinecap="square" />
                           </svg>
                         </div>
                       </div>
@@ -1124,28 +1231,28 @@ export default function Component() {
                       <div className="absolute inset-[8.33%_24.17%_75.02%_37.46%]" data-name="Vector">
                         <div className="absolute inset-[-26.65%_-14.67%_-19.54%_-31.52%]">
                           <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 8.63725 3.74706">
-                            <path clipRule="evenodd" d={svgPaths.p281a0780} fillRule="evenodd" id="Vector" stroke="var(--stroke-0, #4E4E4E)" strokeWidth="0.8" strokeLinecap="square" />
+                            <path clipRule="evenodd" d={svgPaths.p281a0780} fillRule="evenodd" id="Vector" stroke="var(--stroke-0, #4E4E4E)" strokeWidth="0.5" strokeLinecap="square" />
                           </svg>
                         </div>
                       </div>
                       <div className="absolute bottom-[8.33%] left-[8.34%] right-[8.33%] top-1/4" data-name="Vector">
                         <div className="absolute inset-[-4.87%_-3.9%]">
                           <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 13.8333 11.2667">
-                            <path d={svgPaths.pc9eb600} id="Vector" stroke="var(--stroke-0, #4E4E4E)" strokeWidth="0.8" />
+                            <path d={svgPaths.pc9eb600} id="Vector" stroke="var(--stroke-0, #4E4E4E)" strokeWidth="0.5" />
                           </svg>
                         </div>
                       </div>
                       <div className="absolute inset-[47.92%_8.33%_31.25%_62.5%]" data-name="Vector">
                         <div className="absolute inset-[-15.58%_-11.13%]">
                           <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 5.49167 4.20833">
-                            <path d={svgPaths.p1cd6da00} id="Vector" stroke="var(--stroke-0, #4E4E4E)" strokeWidth="0.8" />
+                            <path d={svgPaths.p1cd6da00} id="Vector" stroke="var(--stroke-0, #4E4E4E)" strokeWidth="0.5" />
                           </svg>
                         </div>
                       </div>
                       <div className="absolute inset-[34.38%_8.34%_15.63%_91.66%]" data-name="Vector">
                         <div className="absolute inset-[-6.49%_-0.5px]">
                           <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 1 8.7">
-                            <path d="M0.5 0.5V8.2" id="Vector" stroke="var(--stroke-0, #4E4E4E)" strokeWidth="0.8" strokeLinecap="square" />
+                            <path d="M0.5 0.5V8.2" id="Vector" stroke="var(--stroke-0, #4E4E4E)" strokeWidth="0.5" strokeLinecap="square" />
                           </svg>
                         </div>
                       </div>
@@ -1324,7 +1431,7 @@ export default function Component() {
                       </div>
                     </div>
                     <div className="absolute inset-0 pointer-events-none rounded-[inherit] shadow-[inset_0px_1.222px_14.668px_0px_rgba(255,255,255,0.25)]" />
-                    <div aria-hidden="true" className="absolute border-[#35fff6] border-[2.236px] border-solid inset-0 pointer-events-none rounded-[16px] shadow-[0px_6.708px_25.168px_0px_rgba(0,47,255,0.08)]" />
+                    <div aria-hidden="true" className="absolute inset-0 pointer-events-none rounded-[16px] shadow-[0px_6.708px_25.168px_0px_rgba(0,47,255,0.08)]" style={{ padding: "2.236px", background: "linear-gradient(to right, #35FFF6, #0F67FE)", mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)", maskComposite: "exclude", WebkitMaskComposite: "xor" }} />
                   </div>
                 </div>
               </motion.div>
@@ -1670,8 +1777,8 @@ export default function Component() {
                         <div className="relative shrink-0 size-[15.871px]">
                           <svg className="absolute block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 15.8711 15.8712">
                             <g id="Group 1940698520">
-                              <circle cx="7.93553" cy="7.9357" id="Ellipse 13" r="7.60488" stroke="var(--stroke-0, #4E4E4E)" strokeWidth="0.8" />
-                              <path d={svgPaths.p22921800} id="Vector 20" stroke="var(--stroke-0, #4E4E4E)" strokeWidth="0.8" />
+                              <circle cx="7.93553" cy="7.9357" id="Ellipse 13" r="7.60488" stroke="var(--stroke-0, #4E4E4E)" strokeWidth="0.5" />
+                              <path d={svgPaths.p22921800} id="Vector 20" stroke="var(--stroke-0, #4E4E4E)" strokeWidth="0.5" />
                             </g>
                           </svg>
                         </div>
@@ -1681,8 +1788,8 @@ export default function Component() {
                         <div className="relative shrink-0 size-[15.871px]">
                           <svg className="absolute block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 15.8711 15.8712">
                             <g id="Group 1940698522">
-                              <circle cx="7.93553" cy="7.9357" id="Ellipse 13" r="7.60488" stroke="var(--stroke-0, #4E4E4E)" strokeWidth="0.8" />
-                              <path d={svgPaths.p22921800} id="Vector 20" stroke="var(--stroke-0, #4E4E4E)" strokeWidth="0.8" />
+                              <circle cx="7.93553" cy="7.9357" id="Ellipse 13" r="7.60488" stroke="var(--stroke-0, #4E4E4E)" strokeWidth="0.5" />
+                              <path d={svgPaths.p22921800} id="Vector 20" stroke="var(--stroke-0, #4E4E4E)" strokeWidth="0.5" />
                             </g>
                           </svg>
                         </div>
@@ -1692,8 +1799,8 @@ export default function Component() {
                         <div className="relative shrink-0 size-[15.871px]">
                           <svg className="absolute block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 15.8711 15.8712">
                             <g id="Group 1940698521">
-                              <circle cx="7.93553" cy="7.93568" id="Ellipse 13" r="7.60488" stroke="var(--stroke-0, #4E4E4E)" strokeWidth="0.8" />
-                              <path d={svgPaths.p24ba5c80} id="Vector 20" stroke="var(--stroke-0, #4E4E4E)" strokeWidth="0.8" />
+                              <circle cx="7.93553" cy="7.93568" id="Ellipse 13" r="7.60488" stroke="var(--stroke-0, #4E4E4E)" strokeWidth="0.5" />
+                              <path d={svgPaths.p24ba5c80} id="Vector 20" stroke="var(--stroke-0, #4E4E4E)" strokeWidth="0.5" />
                             </g>
                           </svg>
                         </div>
@@ -1703,8 +1810,8 @@ export default function Component() {
                         <div className="relative shrink-0 size-[15.871px]">
                           <svg className="absolute block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 15.8711 15.8712">
                             <g id="Group 1940698523">
-                              <circle cx="7.93553" cy="7.93568" id="Ellipse 13" r="7.60488" stroke="var(--stroke-0, #4E4E4E)" strokeWidth="0.8" />
-                              <path d={svgPaths.p24ba5c80} id="Vector 20" stroke="var(--stroke-0, #4E4E4E)" strokeWidth="0.8" />
+                              <circle cx="7.93553" cy="7.93568" id="Ellipse 13" r="7.60488" stroke="var(--stroke-0, #4E4E4E)" strokeWidth="0.5" />
+                              <path d={svgPaths.p24ba5c80} id="Vector 20" stroke="var(--stroke-0, #4E4E4E)" strokeWidth="0.5" />
                             </g>
                           </svg>
                         </div>
@@ -1718,9 +1825,18 @@ export default function Component() {
               </div>
               <div className="content-stretch flex flex-col h-[427px] items-center justify-center overflow-clip relative rounded-[32px] shadow-[0px_3px_44px_0px_rgba(0,0,0,0.05)] shrink-0 w-[703px]">
                 <div className="h-[604.051px] relative shrink-0 w-[1073.868px] flex items-center justify-center" data-name="image 112">
-                  <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                    <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgImage112} />
-                  </div>
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={activeScenario}
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: -20 }}
+                      transition={{ duration: 0.3 }}
+                      className="absolute inset-0 overflow-hidden pointer-events-none"
+                    >
+                      <img alt={currentScenario.title} className="absolute left-0 max-w-none size-full top-0 object-contain" src={currentScenario.image} />
+                    </motion.div>
+                  </AnimatePresence>
                 </div>
               </div>
             </div>
@@ -1732,7 +1848,7 @@ export default function Component() {
           <div className="content-stretch flex flex-col gap-[54px] items-center px-[64px] py-[54px] relative w-full">
             <div className="content-stretch flex flex-col gap-[12px] items-center leading-[1.5] not-italic relative shrink-0 text-center w-[1312px]">
               <ScrollReveal className="w-full">
-                <p className="font-['HarmonyOS_Sans_SC:Bold',sans-serif] font-[700] min-w-full relative shrink-0 text-[#191f33] text-[32px] w-[min-content] whitespace-pre-wrap">深受 40+ 万用户的喜爱</p>
+                <p className="font-['HarmonyOS_Sans_SC:Bold',sans-serif] font-[700] min-w-full relative shrink-0 text-[#191f33] text-[32px] w-[min-content] whitespace-pre-wrap">深受 50万+ 用户的喜爱</p>
               </ScrollReveal>
               <ScrollReveal delay={0.1}>
                 <p className="font-['HarmonyOS_Sans_SC:Regular',sans-serif] relative shrink-0 text-[#B2B2B2] text-[18px]">学生、老师、销售、产品经理等用户都喜欢使用听脑AI</p>
@@ -1765,13 +1881,13 @@ export default function Component() {
         <div className="flex flex-col items-center justify-center overflow-clip rounded-[inherit] size-full">
           <div className="content-stretch flex flex-col items-center justify-center px-[147px] py-[54px] relative size-full">
             <div className="content-stretch flex h-[441px] items-end justify-between relative shrink-0 w-full max-w-[1280px] mx-auto">
-              <div className="content-stretch flex flex-col h-full items-start justify-between relative shrink-0">
+              <div className="content-stretch flex flex-col h-full items-center justify-between relative shrink-0">
                 <div className="content-stretch flex flex-col gap-[12px] items-start justify-center leading-[1.5] not-italic relative shrink-0 w-full">
                   <ScrollReveal className="w-full">
-                    <p className="font-['HarmonyOS_Sans_SC:Bold',sans-serif] font-[700] relative shrink-0 text-[#191f33] text-[32px] text-left">支持多端使用，内容自动同步</p>
+                    <p className="font-['HarmonyOS_Sans_SC:Bold',sans-serif] font-[700] relative shrink-0 text-[#191f33] text-[32px] text-left">多端无缝协同，记录随时随地</p>
                   </ScrollReveal>
                   <ScrollReveal className="w-full" delay={0.1}>
-                    <p className="font-['HarmonyOS_Sans_SC:Regular',sans-serif] min-w-full relative shrink-0 text-[#B2B2B2] text-[18px] w-[min-content] whitespace-pre-wrap">实现多端设备高效协同，数据实时同步，保障关键信息在整个工作流程中的连续与可追溯</p>
+                    <p className="font-['HarmonyOS_Sans_SC:Regular',sans-serif] min-w-full relative shrink-0 text-[#B2B2B2] text-[18px] w-[min-content] whitespace-pre-wrap text-left">覆盖 iOS、Android、小程序与平板设备，录音、转写与笔记实时云端同步。无论身处何地，都能无缝切换设备，让思考与创作从不间断。</p>
                   </ScrollReveal>
                 </div>
                 <div className="gap-x-[24px] gap-y-[24px] grid grid-cols-[repeat(2,minmax(0,1fr))] grid-rows-[repeat(2,minmax(0,1fr))] h-[240px] relative shrink-0 w-[607px]">
@@ -1781,14 +1897,14 @@ export default function Component() {
                     <ScanCodeBackgroundImage />
                   </BackgroundImage9>
                   <BackgroundImage9 additionalClassNames="row-2">
-                    <BackgroundImage11 additionalClassNames="h-[68.941px]">
+                    <BackgroundImage11 additionalClassNames="h-[58px]">
                       <img alt="" className="absolute h-[172.27%] left-[-375.89%] max-w-none top-[-39.06%] w-[493.23%]" src={imgImage43} />
                     </BackgroundImage11>
                     <p className="flex-[1_0_0] font-['HarmonyOS_Sans_SC:Bold',sans-serif] leading-[1.5] min-h-px min-w-px not-italic relative text-[#191f33] text-[16px] whitespace-pre-wrap">小程序</p>
                     <ScanCodeBackgroundImage />
                   </BackgroundImage9>
                   <BackgroundImage9 additionalClassNames="col-2 row-2">
-                    <BackgroundImage11 additionalClassNames="h-[70.729px]">
+                    <BackgroundImage11 additionalClassNames="h-[58px]">
                       <img alt="" className="absolute h-[183.83%] left-[-282.68%] max-w-none top-[-44.83%] w-[512.73%]" src={imgImage43} />
                     </BackgroundImage11>
                     <p className="flex-[1_0_0] font-['HarmonyOS_Sans_SC:Bold',sans-serif] leading-[1.5] min-h-px min-w-px not-italic relative text-[#191f33] text-[16px] whitespace-pre-wrap">安卓</p>
@@ -1801,21 +1917,21 @@ export default function Component() {
                       <div className="absolute inset-[12.5%_49.99%_29.38%_50.01%]" data-name="Vector">
                         <div className="absolute inset-[-7.17%_-1.17px]">
                           <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 2.33333 18.608">
-                            <path d="M1.16667 17.4414V1.16667" id="Vector" stroke="var(--stroke-0, #75859D)" strokeLinecap="square" strokeWidth="2.33333" />
+                            <path d="M1.16667 17.4414V1.16667" id="Vector" stroke="var(--stroke-0, #75859D)" strokeLinecap="square" strokeWidth="1.5" />
                           </svg>
                         </div>
                       </div>
                       <div className="absolute bottom-[29.16%] left-1/4 right-1/4 top-[45.84%]" data-name="Vector">
                         <div className="absolute inset-[-23.57%_-11.79%]">
                           <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 17.2998 10.2998">
-                            <path d={svgPaths.p192bd000} id="Vector" stroke="var(--stroke-0, #75859D)" strokeLinecap="square" strokeWidth="2.33333" />
+                            <path d={svgPaths.p192bd000} id="Vector" stroke="var(--stroke-0, #75859D)" strokeLinecap="square" strokeWidth="1.5" />
                           </svg>
                         </div>
                       </div>
                       <div className="absolute bottom-[12.5%] left-1/4 right-1/4 top-[87.5%]" data-name="Vector">
                         <div className="absolute inset-[-1.17px_-8.33%]">
                           <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 16.3333 2.33333">
-                            <path d="M15.1667 1.16667H1.16667" id="Vector" stroke="var(--stroke-0, #75859D)" strokeLinecap="square" strokeWidth="2.33333" />
+                            <path d="M15.1667 1.16667H1.16667" id="Vector" stroke="var(--stroke-0, #75859D)" strokeLinecap="square" strokeWidth="1.5" />
                           </svg>
                         </div>
                       </div>
@@ -1823,101 +1939,8 @@ export default function Component() {
                   </BackgroundImage9>
                 </div>
               </div>
-              <div className="grid-cols-[max-content] grid-rows-[max-content] inline-grid leading-[0] place-items-start relative shrink-0">
-                <div className="col-1 grid-cols-[max-content] grid-rows-[max-content] h-[239.048px] inline-grid ml-0 mt-[36.99px] place-items-start relative row-1 w-[232.772px]">
-                  <div className="col-1 flex h-[238.743px] items-center justify-center ml-0 mt-[0.38px] relative row-1 w-[232.54px]" style={{ "--transform-inner-width": "1185", "--transform-inner-height": "19" } as React.CSSProperties}>
-                    <div className="flex-none rotate-[-37.17deg]">
-                      <div className="h-[184.288px] pointer-events-none relative rounded-[8px] w-[152.096px]" data-name="image 119">
-                        <BackgroundImage6 additionalClassNames="rounded-[8px]" />
-                        <div aria-hidden="true" className="absolute border-2 border-[#e0e7f3] border-solid inset-[-2px] rounded-[10px] shadow-[0px_3.165px_34.82px_0px_rgba(17,7,7,0.05)]" />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-1 flex h-[19.35px] items-center justify-center ml-[62.81px] mt-0 relative row-1 w-[23.639px]" style={{ "--transform-inner-width": "1185", "--transform-inner-height": "19" } as React.CSSProperties}>
-                    <div className="flex-none rotate-[-37.17deg]">
-                      <div className="h-[4.211px] relative w-[26.473px]">
-                        <svg className="absolute block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 26.4732 4.21088">
-                          <path d={svgPaths.p12c89d00} fill="var(--fill-0, #E2E9F4)" id="Vector 1007" />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-1 grid-cols-[max-content] grid-rows-[max-content] h-[201.262px] inline-grid ml-[443.75px] mt-[69.77px] place-items-start relative row-1 w-[148.257px]">
-                  <div className="col-1 flex h-[187.123px] items-center justify-center ml-0 mt-0 relative row-1 w-[141.724px]" style={{ "--transform-inner-width": "1185", "--transform-inner-height": "19" } as React.CSSProperties}>
-                    <div className="flex-none rotate-[24.43deg]">
-                      <div className="h-[169.869px] pointer-events-none relative rounded-[8px] w-[78.494px]" data-name="88ffa0bdd326e11398186a292fef34a7 1">
-                        <img alt="" className="absolute inset-0 max-w-none object-cover rounded-[8px] size-full" src={img88Ffa0Bdd326E11398186A292Fef34A71} />
-                        <div aria-hidden="true" className="absolute border-2 border-[#e0e7f3] border-solid inset-[-2px] rounded-[10px] shadow-[0px_3.165px_34.82px_0px_rgba(0,0,0,0.05)]" />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-1 flex h-[11.53px] items-center justify-center ml-[71.71px] mt-[7.48px] relative row-1 w-[21.184px]" style={{ "--transform-inner-width": "1185", "--transform-inner-height": "19" } as React.CSSProperties}>
-                    <div className="flex-none rotate-[24.43deg]">
-                      <div className="h-[2.639px] relative w-[22.068px]">
-                        <svg className="absolute block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 22.0682 2.63752">
-                          <path d={svgPaths.p2df6f500} fill="var(--fill-0, #E0E8F3)" id="Vector 1006" />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-1 grid-cols-[max-content] grid-rows-[max-content] inline-grid ml-[66.89px] mt-0 place-items-start relative row-1">
-                  <div className="col-1 h-[280.176px] ml-0 mt-0 relative row-1 w-[482.812px]">
-                    <div className="absolute inset-[-5.44%_-3.62%_-6.59%_-3.59%]">
-                      <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 517.587 313.863">
-                        <g filter="url(#filter0_d_1_699)" id="Group 1940698541">
-                          <path d={svgPaths.p258c3d80} fill="url(#paint0_linear_1_699)" id="Vector 1000" stroke="url(#paint1_linear_1_699)" strokeWidth="2.81958" />
-                          <g id="Group 1940698540">
-                            <path d={svgPaths.p22dcf600} fill="var(--fill-0, #FDFFFE)" id="Vector 1001" stroke="url(#paint2_linear_1_699)" strokeWidth="2.81958" />
-                            <path d={svgPaths.p32dd1d80} fill="var(--fill-0, #E1E8F3)" id="Vector 1002" />
-                            <path d={svgPaths.p19ce3480} fill="var(--fill-0, #E1E8F3)" id="Vector 1003" />
-                          </g>
-                        </g>
-                        <defs>
-                          <filter colorInterpolationFilters="sRGB" filterUnits="userSpaceOnUse" height="313.863" id="filter0_d_1_699" width="517.587" x="2.38419e-07" y="-2.38419e-07">
-                            <feFlood floodOpacity="0" result="BackgroundImageFix" />
-                            <feColorMatrix in="SourceAlpha" result="hardAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
-                            <feOffset dy="2.26671" />
-                            <feGaussianBlur stdDeviation="8.04682" />
-                            <feComposite in2="hardAlpha" operator="out" />
-                            <feColorMatrix type="matrix" values="0 0 0 0 0.686275 0 0 0 0 0.780392 0 0 0 0 1 0 0 0 0.25 0" />
-                            <feBlend in2="BackgroundImageFix" mode="normal" result="effect1_dropShadow_1_699" />
-                            <feBlend in="SourceGraphic" in2="effect1_dropShadow_1_699" mode="normal" result="shape" />
-                          </filter>
-                          <linearGradient gradientUnits="userSpaceOnUse" id="paint0_linear_1_699" x1="258.716" x2="258.716" y1="15.2367" y2="282.061">
-                            <stop stopColor="#F2F4F9" />
-                            <stop offset="1" stopColor="#FEFEFE" />
-                          </linearGradient>
-                          <linearGradient gradientUnits="userSpaceOnUse" id="paint1_linear_1_699" x1="258.716" x2="258.716" y1="15.2367" y2="284.328">
-                            <stop stopColor="#E0E8F3" />
-                            <stop offset="0.5" stopColor="#E2E7EE" />
-                          </linearGradient>
-                          <linearGradient gradientUnits="userSpaceOnUse" id="paint2_linear_1_699" x1="258.721" x2="258.721" y1="269.838" y2="294.299">
-                            <stop stopColor="#E1E8F3" />
-                          </linearGradient>
-                        </defs>
-                      </svg>
-                    </div>
-                  </div>
-                  <div className="col-1 h-[206.53px] ml-[60.44px] mt-[25.25px] relative rounded-[6px] row-1 w-[361.066px]">
-                    <div aria-hidden="true" className="absolute border border-[#e1e5f2] border-solid inset-[-1px] pointer-events-none rounded-[7px]" />
-                    <div className="absolute bg-[#ecf3ff] h-[17px] left-[-0.17px] opacity-60 rounded-tl-[6px] rounded-tr-[6px] top-[-0.11px] w-full">
-                      <div className="flex flex-col justify-center size-full">
-                        <div className="content-stretch flex items-center px-[8px] py-[9.067px] relative size-full">
-                          <div className="flex gap-[5.2px] items-center">
-                            <div className="w-[3.176px] h-[3.176px] rounded-full bg-[#3C76CC]" />
-                            <div className="w-[3.176px] h-[3.176px] rounded-full bg-[#3C76CC]" />
-                            <div className="w-[3.176px] h-[3.176px] rounded-full bg-[#3C76CC]" />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="absolute h-[190.631px] left-0 rounded-bl-[11.278px] rounded-br-[11.278px] top-[15.9px] w-[361.066px]" data-name="image 118">
-                      <BackgroundImage6 additionalClassNames="pointer-events-none rounded-bl-[11.278px] rounded-br-[11.278px]" />
-                    </div>
-                  </div>
-                </div>
+              <div className="relative shrink-0 flex items-end">
+                <img src={imgMultiDevice} alt="多端展示" className="block w-[592px] h-[320px] translate-y-[40px]" />
               </div>
             </div>
           </div>

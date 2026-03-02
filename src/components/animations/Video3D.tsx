@@ -4,9 +4,11 @@ import { useState } from "react";
 interface Video3DProps {
   children: React.ReactNode;
   className?: string;
+  hoverScale?: number;
+  innerClassName?: string;
 }
 
-export function Video3D({ children, className = "" }: Video3DProps) {
+export function Video3D({ children, className = "", hoverScale = 1.02, innerClassName = "relative size-full" }: Video3DProps) {
   const [rotateX, setRotateX] = useState(0);
   const [rotateY, setRotateY] = useState(0);
 
@@ -37,11 +39,11 @@ export function Video3D({ children, className = "" }: Video3DProps) {
       onMouseLeave={handleMouseLeave}
     >
       <motion.div
-        className="relative size-full"
+        className={innerClassName}
         animate={{
           rotateX,
           rotateY,
-          scale: rotateX !== 0 || rotateY !== 0 ? 1.02 : 1,
+          scale: rotateX !== 0 || rotateY !== 0 ? hoverScale : 1,
         }}
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
         style={{ transformStyle: "preserve-3d" }}

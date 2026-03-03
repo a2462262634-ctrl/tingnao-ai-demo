@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion } from "motion/react";
 import { AnimatePresence, motion as fm } from "framer-motion";
 import clsx from "clsx";
@@ -20,6 +20,8 @@ import imgSales from "../assets/销售通话.png";
 import imgMultiDevice from "../assets/多端1.png";
 import imgImage20 from "figma:asset/a04f4a80310edd6b390f3eda949ed410d8e38b8f.png";
 import imgImage43 from "figma:asset/d61b776c7a548b6aa297e5c783354db157834759.png";
+import imgMiniProgram from "../assets/小程序.png";
+import imgAndroidQr from "../assets/安卓端.png";
 import imgIos from "../assets/ios.png";
 import imgImage119 from "figma:asset/20acfa273bdbbbcdff1b2151c26bb8384452a4ac.png";
 import img88Ffa0Bdd326E11398186A292Fef34A71 from "figma:asset/b3e20b54ab3d82805eff22408cf88d412f2b0a28.png";
@@ -676,6 +678,8 @@ export default function Component() {
   const [isSceneOpen, setIsSceneOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const templateSectionRef = useRef<HTMLDivElement | null>(null);
+  const [isTemplateInView, setIsTemplateInView] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -683,6 +687,21 @@ export default function Component() {
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const node = templateSectionRef.current;
+    if (!node) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsTemplateInView(true);
+        }
+      },
+      { threshold: 0.2 },
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
   }, []);
 
   // 视频配置 - 请将视频文件放在 public/videos/ 目录下
@@ -1090,8 +1109,7 @@ export default function Component() {
               <div className="grid grid-cols-1 grid-rows-[max-content] leading-[0] place-items-start relative shrink-0 w-full">
                 <ScrollReveal className="col-1 row-1 ml-0 mt-0 w-full">
                   <p className="font-harmony font-bold font-[700] leading-[1.5] not-italic relative text-[#242424] text-[20px] md:text-[32px] w-full whitespace-pre-wrap text-left md:text-left">
-                    连接你的知识库，
-                    让 AI 问答成为你的
+                    AI连接你的知识库，让知识库成为你的
                     <span className="relative inline-block z-10">
                       第二大脑
                       <svg className="absolute left-0 w-full h-[18px] bottom-0 pointer-events-none -z-10" fill="none" preserveAspectRatio="none" viewBox="0 0 150 18">
@@ -1137,7 +1155,7 @@ export default function Component() {
           </div>
         </div>
       </div>
-      <div className="bg-white content-stretch flex flex-col gap-[40px] md:gap-[64px] items-center overflow-clip relative shrink-0 w-full">
+      <div ref={templateSectionRef} className="bg-white content-stretch flex flex-col gap-[40px] md:gap-[64px] items-center overflow-clip relative shrink-0 w-full">
         <div className="content-stretch flex flex-col gap-[32px] md:gap-[80px] h-auto items-center pt-0 md:pt-[90px] relative shrink-0 w-full max-w-[1440px] mx-auto">
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[1500px] md:w-[2085.108px] md:h-[1880.839px] min-[1440px]:w-[3000px] min-[1440px]:h-[2400px] pointer-events-none flex items-center justify-center">
             <div className="absolute inset-0 flex items-center justify-center z-0">
@@ -1315,7 +1333,7 @@ export default function Component() {
           <div className="w-full flex flex-col gap-0 -mt-[126px] md:-mt-[120px] xl:-mt-[120px] pb-[54px] md:pb-[80px] relative z-10">
             {/* 第一排 - 向左滚动 */}
             <div className="flex w-full overflow-hidden py-8 [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
-              <div className="flex gap-[12px] md:gap-4 animate-[scrollLeft_30s_linear_infinite] w-max xl:px-[20px] hover:[animation-play-state:paused]">
+              <div className={clsx("flex gap-[12px] md:gap-4 w-max xl:px-[20px] hover:[animation-play-state:paused]", isTemplateInView ? "animate-[scrollLeft_30s_linear_infinite]" : "animate-none")}>
                 {[
                   { icon: "📝", title: "教育工作会议", desc: "部署教育工作与协同落实" },
                   { icon: "💻", title: "课堂笔记", desc: "高效整理课堂知识点便于复习" },
@@ -1341,7 +1359,7 @@ export default function Component() {
 
             {/* 第二排 - 向右滚动 */}
             <div className="-mt-[52px] flex w-full overflow-hidden py-8 [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
-              <div className="flex gap-[12px] md:gap-4 animate-[scrollLeft_30s_linear_infinite] w-max xl:px-[20px] hover:[animation-play-state:paused]" style={{ animationDirection: 'reverse' }}>
+              <div className={clsx("flex gap-[12px] md:gap-4 w-max xl:px-[20px] hover:[animation-play-state:paused]", isTemplateInView ? "animate-[scrollLeft_30s_linear_infinite]" : "animate-none")} style={{ animationDirection: 'reverse' }}>
                 {[
                   { icon: "✨", title: "极简总结", desc: "将复杂的长内容极简化总结" },
                   { icon: "💬", title: "讨论", desc: "记录讨论要点形成共识" },
@@ -1781,7 +1799,7 @@ export default function Component() {
           </div>
         </div>
       </div>
-      <div className="bg-white h-auto relative rounded-bl-[32px] rounded-br-[32px] shrink-0 w-full py-[24px] md:py-0">
+      <div className="bg-white h-auto relative rounded-bl-[32px] rounded-br-[32px] shrink-0 w-full py-[24px] md:py-0 xl:pb-[40px]">
         <div className="flex flex-col items-center justify-center overflow-visible rounded-[inherit] size-full">
           <div className="content-stretch flex flex-col items-center justify-center relative size-full">
             <div className="content-stretch flex flex-col gap-[24px] md:gap-0 xl:flex-row h-auto items-center xl:items-end justify-between relative shrink-0 w-full max-w-[1280px] mx-auto px-[20px] xl:px-0 overflow-visible">
@@ -1824,7 +1842,7 @@ export default function Component() {
                      <div className="flex items-center justify-between w-full h-full p-[8px] md:p-[24px]">
                         <div className="flex items-center gap-[8px] md:gap-[16px]">
                            <BackgroundImage11 additionalClassNames="group-hover:origin-bottom-left">
-                             <img alt="" className="block w-full h-full object-contain" src={imgImage43} />
+                             <img alt="" className="block w-full h-full object-contain" src={imgMiniProgram} />
                           </BackgroundImage11>
                            <p className="font-harmony font-normal text-[#000000] text-[14px] md:text-[16px]">小程序</p>
                         </div>
@@ -1838,7 +1856,7 @@ export default function Component() {
                      <div className="flex items-center justify-between w-full h-full p-[8px] md:p-[24px]">
                         <div className="flex items-center gap-[8px] md:gap-[16px]">
                            <BackgroundImage11 additionalClassNames="group-hover:origin-bottom-center">
-                             <img alt="" className="block w-full h-full object-contain" src={imgImage43} />
+                             <img alt="" className="block w-full h-full object-contain" src={imgAndroidQr} />
                           </BackgroundImage11>
                            <p className="font-harmony font-normal text-[#000000] text-[14px] md:text-[16px]">安卓</p>
                         </div>

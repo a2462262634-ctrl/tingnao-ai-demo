@@ -1333,7 +1333,7 @@ export default function Component() {
           <div className="w-full flex flex-col gap-0 -mt-[126px] md:-mt-[120px] xl:-mt-[120px] pb-[54px] md:pb-[80px] relative z-10">
             {/* 第一排 - 向左滚动 */}
             <div className="flex w-full overflow-hidden py-8 [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
-              <div className={clsx("flex gap-[12px] md:gap-4 w-max xl:px-[20px] hover:[animation-play-state:paused]", isTemplateInView ? "animate-[scrollLeft_30s_linear_infinite]" : "animate-none")}>
+              <div className={clsx("flex w-max hover:[animation-play-state:paused]", isTemplateInView ? "animate-[scrollLeft_30s_linear_infinite]" : "animate-none")}>
                 {[
                   { icon: "📝", title: "教育工作会议", desc: "部署教育工作与协同落实" },
                   { icon: "💻", title: "课堂笔记", desc: "高效整理课堂知识点便于复习" },
@@ -1345,8 +1345,18 @@ export default function Component() {
                   { icon: "💼", title: "工作例会", desc: "汇总工作进展与部署任务" },
                   { icon: "👥", title: "多人项目讨论会", desc: "同步项目进度与协同解决问题" },
                   { icon: "🎓", title: "教学笔记", desc: "记录教学内容要点" },
+                  { icon: "📝", title: "教育工作会议", desc: "部署教育工作与协同落实" },
+                  { icon: "💻", title: "课堂笔记", desc: "高效整理课堂知识点便于复习" },
+                  { icon: "💼", title: "工作例会", desc: "汇总工作进展与部署任务" },
+                  { icon: "👥", title: "多人项目讨论会", desc: "同步项目进度与协同解决问题" },
+                  { icon: "🎓", title: "教学笔记", desc: "记录教学内容要点" },
+                  { icon: "📝", title: "教育工作会议", desc: "部署教育工作与协同落实" },
+                  { icon: "💻", title: "课堂笔记", desc: "高效整理课堂知识点便于复习" },
+                  { icon: "💼", title: "工作例会", desc: "汇总工作进展与部署任务" },
+                  { icon: "👥", title: "多人项目讨论会", desc: "同步项目进度与协同解决问题" },
+                  { icon: "🎓", title: "教学笔记", desc: "记录教学内容要点" },
                 ].map((card, i) => (
-                  <div key={i} className="flex flex-col items-start gap-[14px] md:gap-[17.93px] w-[160px] h-[120px] md:w-[200px] md:h-[150px] px-[16px] py-[20px] md:px-[20px] md:py-[24px] bg-white border border-[#E9E9E9] shadow-[0px_4px_28px_rgba(0,0,0,0.06)] rounded-[12px]">
+                  <div key={i} className="flex flex-col items-start gap-[14px] md:gap-[17.93px] w-[160px] h-[120px] md:w-[200px] md:h-[150px] px-[16px] py-[20px] md:px-[20px] md:py-[24px] bg-white border border-[#E9E9E9] shadow-[0px_4px_28px_rgba(0,0,0,0.06)] rounded-[12px] mr-[12px] md:mr-4">
                     <div className="flex items-center gap-2 md:gap-3 mb-1.5 md:mb-2 text-[#191F33]">
                       <span className="text-[20px] md:text-2xl">{card.icon}</span>
                       <span className="font-harmony font-bold text-[#242424] text-[13px] md:text-[16px]">{card.title}</span>
@@ -1359,7 +1369,7 @@ export default function Component() {
 
             {/* 第二排 - 向右滚动 */}
             <div className="-mt-[52px] flex w-full overflow-hidden py-8 [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
-              <div className={clsx("flex gap-[12px] md:gap-4 w-max xl:px-[20px] hover:[animation-play-state:paused]", isTemplateInView ? "animate-[scrollLeft_30s_linear_infinite]" : "animate-none")} style={{ animationDirection: 'reverse' }}>
+              <div className={clsx("flex w-max hover:[animation-play-state:paused]", isTemplateInView ? "animate-[scrollLeft_30s_linear_infinite]" : "animate-none")} style={{ animationDirection: 'reverse' }}>
                 {[
                   { icon: "✨", title: "极简总结", desc: "将复杂的长内容极简化总结" },
                   { icon: "💬", title: "讨论", desc: "记录讨论要点形成共识" },
@@ -1371,8 +1381,18 @@ export default function Component() {
                   { icon: "🎤", title: "演讲", desc: "记录演讲精彩瞬间" },
                   { icon: "📅", title: "常务会议", desc: "审议重大事项与作出决策部署" },
                   { icon: "🧠", title: "头脑风暴", desc: "记录创意灵感与想法" },
+                  { icon: "✨", title: "极简总结", desc: "将复杂的长内容极简化总结" },
+                  { icon: "💬", title: "讨论", desc: "记录讨论要点形成共识" },
+                  { icon: "🎤", title: "演讲", desc: "记录演讲精彩瞬间" },
+                  { icon: "📅", title: "常务会议", desc: "审议重大事项与作出决策部署" },
+                  { icon: "🧠", title: "头脑风暴", desc: "记录创意灵感与想法" },
+                  { icon: "✨", title: "极简总结", desc: "将复杂的长内容极简化总结" },
+                  { icon: "💬", title: "讨论", desc: "记录讨论要点形成共识" },
+                  { icon: "🎤", title: "演讲", desc: "记录演讲精彩瞬间" },
+                  { icon: "📅", title: "常务会议", desc: "审议重大事项与作出决策部署" },
+                  { icon: "🧠", title: "头脑风暴", desc: "记录创意灵感与想法" },
                 ].map((card, i) => (
-                  <div key={i} className="flex flex-col items-start gap-[14px] md:gap-[17.93px] w-[160px] h-[120px] md:w-[200px] md:h-[150px] px-[16px] py-[20px] md:px-[20px] md:py-[24px] bg-white border border-[#E9E9E9] shadow-[0px_4px_28px_rgba(0,0,0,0.06)] rounded-[12px]">
+                  <div key={i} className="flex flex-col items-start gap-[14px] md:gap-[17.93px] w-[160px] h-[120px] md:w-[200px] md:h-[150px] px-[16px] py-[20px] md:px-[20px] md:py-[24px] bg-white border border-[#E9E9E9] shadow-[0px_4px_28px_rgba(0,0,0,0.06)] rounded-[12px] mr-[12px] md:mr-4">
                     <div className="flex items-center gap-2 md:gap-3 mb-1.5 md:mb-2 text-[#191F33]">
                       <span className="text-[20px] md:text-2xl">{card.icon}</span>
                       <span className="font-harmony font-bold text-[#242424] text-[13px] md:text-[16px]">{card.title}</span>

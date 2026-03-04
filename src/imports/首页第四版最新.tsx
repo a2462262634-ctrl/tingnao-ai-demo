@@ -1330,9 +1330,9 @@ export default function Component() {
           </div>
 
           {/* 底部滚动卡片区域 */}
-          <div className="w-full flex flex-col gap-0 -mt-[126px] md:-mt-[120px] xl:-mt-[120px] pb-[54px] md:pb-[80px] relative z-10">
+          <div className="w-full flex flex-col gap-[16px] -mt-[126px] md:-mt-[120px] xl:-mt-[120px] pb-[54px] md:pb-[80px] relative z-10">
             {/* 第一排 - 向左滚动 */}
-            <div className="flex w-full overflow-hidden py-8 [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+            <div className="flex w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
               <div className={clsx("flex w-max hover:[animation-play-state:paused]", isTemplateInView ? "animate-[scrollLeft_30s_linear_infinite]" : "animate-none")}>
                 {[
                   { icon: "📝", title: "教育工作会议", desc: "部署教育工作与协同落实" },
@@ -1368,7 +1368,7 @@ export default function Component() {
             </div>
 
             {/* 第二排 - 向右滚动 */}
-            <div className="-mt-[52px] flex w-full overflow-hidden py-8 [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+            <div className="flex w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
               <div className={clsx("flex w-max hover:[animation-play-state:paused]", isTemplateInView ? "animate-[scrollLeft_30s_linear_infinite]" : "animate-none")} style={{ animationDirection: 'reverse' }}>
                 {[
                   { icon: "✨", title: "极简总结", desc: "将复杂的长内容极简化总结" },

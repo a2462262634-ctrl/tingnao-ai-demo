@@ -1356,7 +1356,7 @@ export default function Component() {
                   { icon: "👥", title: "多人项目讨论会", desc: "同步项目进度与协同解决问题" },
                   { icon: "🎓", title: "教学笔记", desc: "记录教学内容要点" },
                 ].map((card, i) => (
-                  <div key={i} className="flex flex-col items-start gap-[14px] md:gap-[17.93px] w-[160px] h-[120px] md:w-[200px] md:h-[150px] px-[16px] py-[20px] md:px-[20px] md:py-[24px] bg-white border border-[#E9E9E9] shadow-[0px_4px_28px_rgba(0,0,0,0.06)] rounded-[12px] mr-[12px] md:mr-4">
+                  <div key={i} className="flex flex-col items-start gap-[14px] md:gap-[17.93px] w-[160px] h-auto md:w-[200px] px-[16px] py-[20px] md:px-[20px] md:py-[24px] bg-white border border-[#E9E9E9] shadow-[0px_4px_28px_rgba(0,0,0,0.06)] rounded-[12px] mr-[12px] md:mr-4">
                     <div className="flex items-center gap-2 md:gap-3 mb-1.5 md:mb-2 text-[#191F33]">
                       <span className="text-[20px] md:text-2xl">{card.icon}</span>
                       <span className="font-harmony font-bold text-[#242424] text-[13px] md:text-[16px]">{card.title}</span>
@@ -1392,7 +1392,7 @@ export default function Component() {
                   { icon: "📅", title: "常务会议", desc: "审议重大事项与作出决策部署" },
                   { icon: "🧠", title: "头脑风暴", desc: "记录创意灵感与想法" },
                 ].map((card, i) => (
-                  <div key={i} className="flex flex-col items-start gap-[14px] md:gap-[17.93px] w-[160px] h-[120px] md:w-[200px] md:h-[150px] px-[16px] py-[20px] md:px-[20px] md:py-[24px] bg-white border border-[#E9E9E9] shadow-[0px_4px_28px_rgba(0,0,0,0.06)] rounded-[12px] mr-[12px] md:mr-4">
+                  <div key={i} className="flex flex-col items-start gap-[14px] md:gap-[17.93px] w-[160px] h-auto md:w-[200px] px-[16px] py-[20px] md:px-[20px] md:py-[24px] bg-white border border-[#E9E9E9] shadow-[0px_4px_28px_rgba(0,0,0,0.06)] rounded-[12px] mr-[12px] md:mr-4">
                     <div className="flex items-center gap-2 md:gap-3 mb-1.5 md:mb-2 text-[#191F33]">
                       <span className="text-[20px] md:text-2xl">{card.icon}</span>
                       <span className="font-harmony font-bold text-[#242424] text-[13px] md:text-[16px]">{card.title}</span>

@@ -796,12 +796,12 @@ export default function Component() {
   // 视频配置 - 请将视频文件放在 public/videos/ 目录下
   const heroVideoUrl = "/videos/hero.mp4"; // 首页主视频
   const transcribeVideoUrl = "/videos/transcribe.mp4"; // 实时转写视频
-  const summaryVideoUrl = "/videos/summary.mp4"; // 智能总结视频
   const knowledgeVideoUrl = "/videos/knowledge.mp4"; // 知识库视频
   const transcribeVideoPoster = imgMeeting;
-  const summaryVideoPoster = imgImage112;
   const knowledgeVideoPoster = imgSales;
   const [activeScenario, setActiveScenario] = useState(0);
+  const [summaryCarouselIndex, setSummaryCarouselIndex] = useState(0);
+  const summaryCarouselImages = [imgImage112, imgMeeting];
   const scenarios = [
     {
       label: "会议记录",
@@ -833,6 +833,14 @@ export default function Component() {
     },
   ];
   const currentScenario = scenarios[activeScenario];
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setSummaryCarouselIndex((prev) => (prev + 1) % summaryCarouselImages.length);
+    }, 2800);
+
+    return () => window.clearInterval(timer);
+  }, [summaryCarouselImages.length]);
 
   return (
     <div className="bg-white content-stretch flex flex-col items-start relative size-full" data-name="首页-第四版-最新">
@@ -1154,11 +1162,20 @@ export default function Component() {
                   </div>
                 </div>
                 <Video3D className="w-full h-auto relative rounded-[12px] md:rounded-[32px] shrink-0" data-name="80+ 海量智能模板，让每一次记录都更省时间">
-                  <LazyVideo
-                    className="w-full h-auto object-contain rounded-[12px] md:rounded-[32px] relative z-[1]"
-                    poster={summaryVideoPoster}
-                    src={summaryVideoUrl}
-                  />
+                  <div className="w-full h-auto relative rounded-[12px] md:rounded-[32px] overflow-hidden">
+                    <AnimatePresence mode="wait">
+                      <fm.img
+                        key={summaryCarouselImages[summaryCarouselIndex]}
+                        src={summaryCarouselImages[summaryCarouselIndex]}
+                        alt="智能总结轮播图"
+                        className="w-full h-auto object-contain rounded-[12px] md:rounded-[32px] relative z-[1]"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.45, ease: "easeInOut" }}
+                      />
+                    </AnimatePresence>
+                  </div>
                 </Video3D>
               </div>
               <BackgroundImage2 text="立即使用" additionalClassNames="h-full px-[23.704px] py-[5.185px]" />

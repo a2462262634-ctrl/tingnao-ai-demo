@@ -1153,13 +1153,13 @@ export default function Component() {
                     </div>
                   </div>
                 </div>
-                <div className="w-full h-auto relative rounded-[12px] md:rounded-[32px] shrink-0">
+                <Video3D className="w-full h-auto relative rounded-[12px] md:rounded-[32px] shrink-0" data-name="80+ 海量智能模板，让每一次记录都更省时间">
                   <LazyVideo
                     className="w-full h-auto object-contain rounded-[12px] md:rounded-[32px] relative z-[1]"
                     poster={summaryVideoPoster}
                     src={summaryVideoUrl}
                   />
-                </div>
+                </Video3D>
               </div>
               <BackgroundImage2 text="立即使用" additionalClassNames="h-full px-[23.704px] py-[5.185px]" />
             </div>

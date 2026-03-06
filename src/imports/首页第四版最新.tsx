@@ -1185,13 +1185,13 @@ export default function Component() {
                         transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
                       />
                     </AnimatePresence>
-                    <div className="mt-[24px] flex items-center justify-center gap-[8px]">
+                    <div className="relative z-10 mt-[24px] flex items-center justify-center gap-[8px]">
                       {summaryCarouselImages.map((image, index) => (
                         <button
                           key={image}
                           type="button"
                           className={clsx(
-                            "h-[8px] rounded-full transition-all duration-300",
+                            "h-[8px] rounded-full transition-all duration-300 cursor-pointer pointer-events-auto",
                             summaryCarouselIndex === index ? "w-[20px] bg-[#0F67FE]" : "w-[8px] bg-[#D5DCE8]",
                           )}
                           onClick={() => setSummaryCarouselIndex(index)}

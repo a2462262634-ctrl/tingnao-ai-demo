@@ -843,6 +843,13 @@ export default function Component() {
     return () => window.clearInterval(timer);
   }, [summaryCarouselImages.length]);
 
+  useEffect(() => {
+    summaryCarouselImages.forEach((imageSrc) => {
+      const image = new Image();
+      image.src = imageSrc;
+    });
+  }, [summaryCarouselImages]);
+
   return (
     <div className="bg-white content-stretch flex flex-col items-start relative size-full" data-name="首页-第四版-最新">
       <div className="bg-white content-stretch flex flex-col gap-[40px] md:gap-[80px] items-center pb-[40px] md:pb-[72px] pt-[72px] relative shrink-0 w-full">
@@ -1163,17 +1170,18 @@ export default function Component() {
                   </div>
                 </div>
                 <Video3D className="w-full h-auto relative rounded-[12px] md:rounded-[32px] shrink-0" data-name="80+ 海量智能模板，让每一次记录都更省时间">
-                  <div className="w-full h-auto relative rounded-[12px] md:rounded-[32px]">
-                    <AnimatePresence mode="wait">
+                  <div className="w-full h-auto relative rounded-[12px] md:rounded-[32px] overflow-hidden bg-[#F7FAFF]">
+                    <img src={summaryCarouselImages[0]} alt="" aria-hidden="true" className="w-full h-auto object-contain opacity-0 pointer-events-none select-none" />
+                    <AnimatePresence initial={false} mode="sync">
                       <fm.img
                         key={summaryCarouselImages[summaryCarouselIndex]}
                         src={summaryCarouselImages[summaryCarouselIndex]}
                         alt="智能总结轮播图"
-                        className="w-full h-auto object-contain rounded-[12px] md:rounded-[32px] relative z-[1]"
-                        initial={{ opacity: 0, x: 56 }}
+                        className="absolute inset-0 w-full h-full object-contain rounded-[12px] md:rounded-[32px] z-[1]"
+                        initial={{ opacity: 0, x: 28 }}
                         animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: -56 }}
-                        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                        exit={{ opacity: 0, x: -28 }}
+                        transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
                       />
                     </AnimatePresence>
                     <div className="mt-[12px] flex items-center justify-center gap-[8px]">

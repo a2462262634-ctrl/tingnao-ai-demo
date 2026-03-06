@@ -798,7 +798,6 @@ export default function Component() {
   const transcribeVideoUrl = "/videos/transcribe.mp4"; // 实时转写视频
   const summaryVideoUrl = "/videos/summary.mp4"; // 智能总结视频
   const knowledgeVideoUrl = "/videos/knowledge.mp4"; // 知识库视频
-  const heroVideoPoster = imgImage135;
   const transcribeVideoPoster = imgMeeting;
   const summaryVideoPoster = imgImage112;
   const knowledgeVideoPoster = imgSales;
@@ -1006,7 +1005,6 @@ export default function Component() {
           <Video3D className="w-full aspect-video sm:aspect-[16/10] lg:aspect-[21/9] min-[1320px]:w-[1280px] min-[1320px]:h-[720px] min-[1320px]:aspect-auto relative rounded-[12px] md:rounded-[32px] shrink-0 md:aspect-video xl:aspect-video" data-name="80+ 海量智能模板，让每一次记录都更省时间">
             <HeroVideo
               className="absolute inset-0 w-full h-full object-cover rounded-[12px] md:rounded-[32px] z-[1]"
-              poster={heroVideoPoster}
               src={heroVideoUrl}
             />
             <div aria-hidden="true" className="absolute border-[4px] md:border-8 border-solid border-white inset-[-4px] md:inset-[-8px] pointer-events-none rounded-[12px] md:rounded-[40px] shadow-[0px_6px_44px_0px_rgba(0,0,0,0.07)]" />

@@ -802,6 +802,7 @@ export default function Component() {
   const transcribeVideoPoster = imgMeeting;
   const [activeScenario, setActiveScenario] = useState(0);
   const [summaryCarouselIndex, setSummaryCarouselIndex] = useState(0);
+  const [isSummaryCarouselHovered, setIsSummaryCarouselHovered] = useState(false);
   const summaryCarouselImages = [imgAiSummary, imgMindMap];
   const scenarios = [
     {
@@ -836,12 +837,13 @@ export default function Component() {
   const currentScenario = scenarios[activeScenario];
 
   useEffect(() => {
+    if (isSummaryCarouselHovered) return;
     const timer = window.setInterval(() => {
       setSummaryCarouselIndex((prev) => (prev + 1) % summaryCarouselImages.length);
-    }, 4000);
+    }, 7000);
 
     return () => window.clearInterval(timer);
-  }, [summaryCarouselImages.length]);
+  }, [isSummaryCarouselHovered, summaryCarouselImages.length]);
 
   useEffect(() => {
     summaryCarouselImages.forEach((imageSrc) => {
@@ -1170,7 +1172,11 @@ export default function Component() {
                   </div>
                 </div>
                 <Video3D className="w-full h-auto relative rounded-[12px] md:rounded-[32px] shrink-0" data-name="80+ 海量智能模板，让每一次记录都更省时间">
-                  <div className="w-full h-auto relative rounded-[12px] md:rounded-[32px] overflow-hidden bg-[#F7FAFF]">
+                  <div
+                    className="w-full h-auto relative rounded-[12px] md:rounded-[32px] overflow-hidden"
+                    onMouseEnter={() => setIsSummaryCarouselHovered(true)}
+                    onMouseLeave={() => setIsSummaryCarouselHovered(false)}
+                  >
                     <img src={summaryCarouselImages[0]} alt="" aria-hidden="true" className="w-full h-auto object-contain opacity-0 pointer-events-none select-none" />
                     <AnimatePresence initial={false} mode="sync">
                       <fm.img
@@ -1184,7 +1190,7 @@ export default function Component() {
                         transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
                       />
                     </AnimatePresence>
-                    <div className="mt-[12px] flex items-center justify-center gap-[8px]">
+                    <div className="mt-[18px] flex items-center justify-center gap-[8px]">
                       {summaryCarouselImages.map((image, index) => (
                         <button
                           key={image}

@@ -782,14 +782,6 @@ export default function Component() {
   ];
   const currentScenario = scenarios[activeScenario];
 
-  useEffect(() => {
-    // Preload images
-    scenarios.forEach((scenario) => {
-      const img = new Image();
-      img.src = scenario.image;
-    });
-  }, [scenarios]);
-
   return (
     <div className="bg-white content-stretch flex flex-col items-start relative size-full" data-name="首页-第四版-最新">
       <div className="bg-white content-stretch flex flex-col gap-[40px] md:gap-[80px] items-center pb-[40px] md:pb-[72px] pt-[72px] relative shrink-0 w-full">
@@ -1916,7 +1908,7 @@ export default function Component() {
                 </div>
               </div>
               <div className="relative shrink-0 flex items-end justify-center w-full xl:w-auto">
-                <img src={imgMultiDevice} alt="多端展示" className="block w-full max-w-[592px] h-auto md:translate-y-[16px] xl:translate-y-[36px]" />
+                <img src={imgMultiDevice} alt="多端展示" loading="lazy" decoding="async" className="block w-full max-w-[592px] h-auto md:translate-y-[16px] xl:translate-y-[36px]" />
               </div>
             </div>
           </div>
@@ -1938,7 +1930,7 @@ export default function Component() {
               <div className="-translate-x-1/2 absolute contents left-1/2 top-[-65.96px]">
                 <div className="-translate-x-1/2 absolute h-[clamp(88px,26vw,120px)] md:h-[168.071px] left-1/2 top-[-40px] md:top-[-65.96px] w-[clamp(96px,28vw,130px)] md:w-[181.972px]" data-name="image 136">
                   <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                    <img alt="" className="absolute h-[109.28%] left-[-27.79%] max-w-none top-[-4.35%] w-[151.39%]" src={imgImage136} />
+                    <img alt="" loading="lazy" decoding="async" className="absolute h-[109.28%] left-[-27.79%] max-w-none top-[-4.35%] w-[151.39%]" src={imgImage136} />
                   </div>
                 </div>
               </div>

@@ -19,8 +19,17 @@ export default defineConfig({
     },
   },
   build: {
-    minify: false,
-    cssMinify: false,
+    minify: 'esbuild',
+    cssMinify: true,
+    reportCompressedSize: false,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          react: ['react', 'react-dom'],
+          motion: ['framer-motion', 'motion'],
+        },
+      },
+    },
   },
 
   // File types to support raw imports. Never add .css, .tsx, or .ts files to this.

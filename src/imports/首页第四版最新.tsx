@@ -1226,7 +1226,7 @@ export default function Component() {
           </div>
         </div>
       </div>
-      <div ref={templateSectionRef} className="bg-white content-stretch flex flex-col gap-[40px] md:gap-[64px] items-center overflow-clip relative shrink-0 w-full">
+      <div ref={templateSectionRef} className="bg-white content-stretch flex flex-col gap-[40px] md:gap-[64px] items-center overflow-visible relative shrink-0 w-full">
         <div className="content-stretch flex flex-col gap-[32px] md:gap-[80px] h-auto items-center pt-0 md:pt-[90px] relative shrink-0 w-full max-w-[1440px] mx-auto">
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[1500px] md:w-[2085.108px] md:h-[1880.839px] min-[1440px]:w-[3000px] min-[1440px]:h-[2400px] pointer-events-none flex items-center justify-center">
             <div className="absolute inset-0 flex items-center justify-center z-0">

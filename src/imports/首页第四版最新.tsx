@@ -585,6 +585,86 @@ function ScrollReveal({ children, className, delay = 0, direction = "up" }: { ch
   );
 }
 
+function LazyVideo({ src, className, ...props }: React.VideoHTMLAttributes<HTMLVideoElement>) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          // 当视频进入视口时播放
+          videoRef.current?.play().catch(() => {
+            // 忽略自动播放失败的错误（通常是因为未静音或策略限制，但这里我们是muted的）
+          });
+        } else {
+          // 离开视口时暂停，节省资源
+          videoRef.current?.pause();
+        }
+      },
+      { threshold: 0.1 } // 只要进入 10% 就开始加载/播放
+    );
+
+    if (videoRef.current) {
+      observer.observe(videoRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <video
+      ref={videoRef}
+      src={src}
+      className={className}
+      muted
+      loop
+      playsInline
+      preload="none" // 关键：默认不加载，直到播放时才加载
+      {...props}
+    />
+  );
+}
+
+function LazyVideo({ src, className, ...props }: React.VideoHTMLAttributes<HTMLVideoElement>) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          // 当视频进入视口时播放
+          videoRef.current?.play().catch(() => {
+            // 忽略自动播放失败的错误
+          });
+        } else {
+          // 离开视口时暂停，节省资源
+          videoRef.current?.pause();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (videoRef.current) {
+      observer.observe(videoRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <video
+      ref={videoRef}
+      src={src}
+      className={className}
+      muted
+      loop
+      playsInline
+      preload="none"
+      {...props}
+    />
+  );
+}
+
 const reviewsData = [
   {
     review: "\u201c会议记录从2小时缩短到5分钟，关键信息一目了然，团队协作效率提升了3倍\u201d",
@@ -925,6 +1005,7 @@ export default function Component() {
               className="absolute inset-0 w-full h-full object-cover rounded-[12px] md:rounded-[32px] z-[1]"
               loop
               playsInline
+              preload="auto"
               src={heroVideoUrl}
             />
             <div aria-hidden="true" className="absolute border-[4px] md:border-8 border-solid border-white inset-[-4px] md:inset-[-8px] pointer-events-none rounded-[12px] md:rounded-[40px] shadow-[0px_6px_44px_0px_rgba(0,0,0,0.07)]" />
@@ -1010,12 +1091,8 @@ export default function Component() {
             <BackgroundImage2 text="立即使用" additionalClassNames="px-[24px] py-[6px]" buttonClassNames="self-start" />
           </div>
           <Video3D className="w-full max-w-[682px] md:max-w-none xl:max-w-[682px] relative rounded-[12px] md:rounded-[23.444px] shrink-0 md:order-1 xl:order-2" data-name="80+ 海量智能模板，让每一次记录都更省时间" hoverScale={1}>
-            <video
-              autoPlay
-              muted
+            <LazyVideo
               className="w-full h-auto object-contain rounded-[12px] md:rounded-[23.444px] z-[1]"
-              loop
-              playsInline
               src={transcribeVideoUrl}
             />
           </Video3D>
@@ -1077,12 +1154,8 @@ export default function Component() {
                   </div>
                 </div>
                 <div className="w-full h-auto relative rounded-[12px] md:rounded-[32px] shrink-0">
-                  <video
-                    autoPlay
-                    muted
+                  <LazyVideo
                     className="w-full h-auto object-contain rounded-[12px] md:rounded-[32px] relative z-[1]"
-                    loop
-                    playsInline
                     src={summaryVideoUrl}
                   />
                 </div>
@@ -1095,12 +1168,8 @@ export default function Component() {
       <div className="bg-white content-stretch flex h-auto items-center justify-between overflow-clip pt-[54px] pb-[40px] md:py-[80px] relative shrink-0 w-full">
         <div className="content-stretch flex flex-col md:flex-col xl:flex-row gap-[40px] md:gap-[72px] h-auto items-start xl:items-center relative rounded-bl-[2px] rounded-br-[2px] rounded-tl-[54px] rounded-tr-[54px] shrink-0 w-full max-w-[1280px] mx-auto px-[20px]">
           <Video3D className="w-full max-w-[682px] md:max-w-none xl:max-w-[682px] relative rounded-[12px] md:rounded-[22px] shrink-0" data-name="80+ 海量智能模板，让每一次记录都更省时间">
-            <video
-              autoPlay
-              muted
+            <LazyVideo
               className="w-full h-auto object-contain rounded-[12px] md:rounded-[22px] relative z-[1]"
-              loop
-              playsInline
               src={knowledgeVideoUrl}
             />
           </Video3D>

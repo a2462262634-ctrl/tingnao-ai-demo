@@ -1019,7 +1019,7 @@ export default function Component() {
             </div>
             <BackgroundImage />
           </div>
-          <Video3D className="w-full aspect-video sm:aspect-[16/10] lg:aspect-[21/9] min-[1320px]:w-[1280px] min-[1320px]:h-[720px] min-[1320px]:aspect-auto relative rounded-[12px] md:rounded-[32px] shrink-0 md:aspect-video xl:aspect-video" data-name="80+ 海量智能模板，让每一次记录都更省时间">
+          <Video3D className="w-[calc(100%+40px)] -mx-[20px] md:w-full md:mx-0 aspect-video sm:aspect-[16/10] lg:aspect-[21/9] min-[1320px]:w-[1280px] min-[1320px]:h-[720px] min-[1320px]:aspect-auto relative rounded-[12px] md:rounded-[32px] shrink-0 md:aspect-video xl:aspect-video" data-name="80+ 海量智能模板，让每一次记录都更省时间">
             <HeroVideo
               className="absolute inset-0 w-full h-full object-cover rounded-[12px] md:rounded-[32px] z-[1]"
               src={heroVideoUrl}

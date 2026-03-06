@@ -32,6 +32,8 @@ import imgImage47 from "figma:asset/ac3eefcfa5a3049d8ed9230860d9c21735c52590.png
 import imgContentCreation from "../assets/内容创作.png";
 import imgImage48 from "figma:asset/11eba6f21d8dc97aa4c1daa89bb862d4d81aeb82.png";
 import imgAiQa from "../assets/AI问答.png";
+import imgAiSummary from "../assets/AI智能总结.png";
+import imgMindMap from "../assets/思维导图.png";
 type BackgroundImage2Props = {
   text: string;
   additionalClassNames?: string;
@@ -800,7 +802,7 @@ export default function Component() {
   const transcribeVideoPoster = imgMeeting;
   const [activeScenario, setActiveScenario] = useState(0);
   const [summaryCarouselIndex, setSummaryCarouselIndex] = useState(0);
-  const summaryCarouselImages = [imgImage112, imgMeeting];
+  const summaryCarouselImages = [imgAiSummary, imgMindMap];
   const scenarios = [
     {
       label: "会议记录",
@@ -836,7 +838,7 @@ export default function Component() {
   useEffect(() => {
     const timer = window.setInterval(() => {
       setSummaryCarouselIndex((prev) => (prev + 1) % summaryCarouselImages.length);
-    }, 2800);
+    }, 4000);
 
     return () => window.clearInterval(timer);
   }, [summaryCarouselImages.length]);
@@ -1161,19 +1163,33 @@ export default function Component() {
                   </div>
                 </div>
                 <Video3D className="w-full h-auto relative rounded-[12px] md:rounded-[32px] shrink-0" data-name="80+ 海量智能模板，让每一次记录都更省时间">
-                  <div className="w-full h-auto relative rounded-[12px] md:rounded-[32px] overflow-hidden">
+                  <div className="w-full h-auto relative rounded-[12px] md:rounded-[32px]">
                     <AnimatePresence mode="wait">
                       <fm.img
                         key={summaryCarouselImages[summaryCarouselIndex]}
                         src={summaryCarouselImages[summaryCarouselIndex]}
                         alt="智能总结轮播图"
                         className="w-full h-auto object-contain rounded-[12px] md:rounded-[32px] relative z-[1]"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.45, ease: "easeInOut" }}
+                        initial={{ opacity: 0, x: 56 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -56 }}
+                        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                       />
                     </AnimatePresence>
+                    <div className="mt-[12px] flex items-center justify-center gap-[8px]">
+                      {summaryCarouselImages.map((image, index) => (
+                        <button
+                          key={image}
+                          type="button"
+                          className={clsx(
+                            "h-[8px] rounded-full transition-all duration-300",
+                            summaryCarouselIndex === index ? "w-[20px] bg-[#0F67FE]" : "w-[8px] bg-[#D5DCE8]",
+                          )}
+                          onClick={() => setSummaryCarouselIndex(index)}
+                          aria-label={`切换到第${index + 1}张`}
+                        />
+                      ))}
+                    </div>
                   </div>
                 </Video3D>
               </div>

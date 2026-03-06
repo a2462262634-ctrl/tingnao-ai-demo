@@ -1329,7 +1329,7 @@ export default function Component() {
                   >
                     <div className="flex-none rotate-[10.61deg]">
                       <div className="bg-white relative rounded-[16px] h-[170px]" data-name="模版一">
-                        <div className="content-stretch flex flex-col gap-[16px] items-start px-[24px] pt-[24px] pb-[32px] relative rounded-[inherit]">
+                        <div className="content-stretch flex flex-col gap-[16px] items-start px-[24px] pt-[24px] pb-[24px] relative rounded-[inherit]">
                           <div className="content-stretch flex flex-col gap-[12px] items-start leading-[1.5] not-italic relative shrink-0 w-full">
                             <div className="content-stretch flex gap-[12.224px] items-center relative shrink-0 text-[#191f33]">
                               <p className="font-harmony font-normal relative shrink-0 text-[26.246px]">✨</p>

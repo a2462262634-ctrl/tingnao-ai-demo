@@ -1328,8 +1328,7 @@ export default function Component() {
                     style={{ "--transform-inner-width": "1185", "--transform-inner-height": "97" } as React.CSSProperties}
                   >
                     <div className="flex-none rotate-[10.61deg]">
-                      <div className="bg-white relative rounded-[16px] h-[170px]" data-name="模版一">
-                        <div className="content-stretch flex flex-col gap-[16px] items-start px-[24px] pt-[24px] pb-[24px] relative rounded-[inherit]">
+                      <div className="bg-white relative rounded-[16px] h-[170px] content-stretch flex flex-col gap-[16px] items-start px-[24px] pt-[24px] pb-[24px]" data-name="模版一">
                           <div className="content-stretch flex flex-col gap-[12px] items-start leading-[1.5] not-italic relative shrink-0 w-full">
                             <div className="content-stretch flex gap-[12.224px] items-center relative shrink-0 text-[#191f33]">
                               <p className="font-harmony font-normal relative shrink-0 text-[26.246px]">✨</p>
@@ -1346,7 +1345,6 @@ export default function Component() {
                               <p className="font-harmony font-normal leading-[normal] not-italic relative shrink-0 text-[11.955px] text-white">使用模板</p>
                             </div>
                           </div>
-                        </div>
                         <div className="absolute inset-0 pointer-events-none rounded-[inherit] shadow-[inset_0px_1.222px_14.668px_0px_rgba(255,255,255,0.25)]" />
                         <div aria-hidden="true" className="absolute inset-0 pointer-events-none rounded-[16px] shadow-[0px_6.708px_25.168px_0px_rgba(0,47,255,0.08)]" style={{ padding: "2px", background: "linear-gradient(-34deg, #0F67FE, #B0F1FF)", mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)", maskComposite: "exclude", WebkitMaskComposite: "xor" }} />
                       </div>

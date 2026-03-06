@@ -31,6 +31,7 @@ import imgImage46 from "figma:asset/f266a447fc86466c02a3550b1bfc38f1a18e50f2.png
 import imgImage47 from "figma:asset/ac3eefcfa5a3049d8ed9230860d9c21735c52590.png";
 import imgContentCreation from "../assets/内容创作.png";
 import imgImage48 from "figma:asset/11eba6f21d8dc97aa4c1daa89bb862d4d81aeb82.png";
+import imgAiQa from "../assets/AI问答.png";
 type BackgroundImage2Props = {
   text: string;
   additionalClassNames?: string;
@@ -796,9 +797,7 @@ export default function Component() {
   // 视频配置 - 请将视频文件放在 public/videos/ 目录下
   const heroVideoUrl = "/videos/hero.mp4"; // 首页主视频
   const transcribeVideoUrl = "/videos/transcribe.mp4"; // 实时转写视频
-  const knowledgeVideoUrl = "/videos/knowledge.mp4"; // 知识库视频
   const transcribeVideoPoster = imgMeeting;
-  const knowledgeVideoPoster = imgSales;
   const [activeScenario, setActiveScenario] = useState(0);
   const [summaryCarouselIndex, setSummaryCarouselIndex] = useState(0);
   const summaryCarouselImages = [imgImage112, imgMeeting];
@@ -1186,11 +1185,7 @@ export default function Component() {
       <div className="bg-white content-stretch flex h-auto items-center justify-between overflow-clip pt-[54px] pb-[40px] md:py-[80px] relative shrink-0 w-full">
         <div className="content-stretch flex flex-col md:flex-col xl:flex-row gap-[40px] md:gap-[72px] h-auto items-start xl:items-center relative rounded-bl-[2px] rounded-br-[2px] rounded-tl-[54px] rounded-tr-[54px] shrink-0 w-full max-w-[1280px] mx-auto px-[20px]">
           <Video3D className="w-full max-w-[682px] md:max-w-none xl:max-w-[682px] relative rounded-[12px] md:rounded-[22px] shrink-0" data-name="80+ 海量智能模板，让每一次记录都更省时间">
-            <LazyVideo
-              className="w-full h-auto object-contain rounded-[12px] md:rounded-[22px] relative z-[1]"
-              poster={knowledgeVideoPoster}
-              src={knowledgeVideoUrl}
-            />
+            <img src={imgAiQa} alt="AI问答" className="w-full h-auto object-contain rounded-[12px] md:rounded-[22px] relative z-[1]" />
           </Video3D>
           <div className="content-stretch flex flex-col h-auto items-start relative shrink-0 w-full md:w-[525px] gap-[54px]">
             <div className="content-stretch flex flex-col gap-[24px] md:gap-[32px] items-start justify-center relative shrink-0 w-full">

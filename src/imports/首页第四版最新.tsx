@@ -804,6 +804,7 @@ export default function Component() {
   const [summaryCarouselIndex, setSummaryCarouselIndex] = useState(0);
   const [isSummaryCarouselHovered, setIsSummaryCarouselHovered] = useState(false);
   const summaryCarouselImages = [imgAiSummary, imgMindMap];
+  const summaryCarouselDurations = [7000, 5000];
   const scenarios = [
     {
       label: "会议记录",
@@ -838,12 +839,12 @@ export default function Component() {
 
   useEffect(() => {
     if (isSummaryCarouselHovered) return;
-    const timer = window.setInterval(() => {
+    const timer = window.setTimeout(() => {
       setSummaryCarouselIndex((prev) => (prev + 1) % summaryCarouselImages.length);
-    }, 7000);
+    }, summaryCarouselDurations[summaryCarouselIndex]);
 
-    return () => window.clearInterval(timer);
-  }, [isSummaryCarouselHovered, summaryCarouselImages.length]);
+    return () => window.clearTimeout(timer);
+  }, [isSummaryCarouselHovered, summaryCarouselDurations, summaryCarouselImages.length, summaryCarouselIndex]);
 
   useEffect(() => {
     summaryCarouselImages.forEach((imageSrc) => {

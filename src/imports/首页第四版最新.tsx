@@ -604,7 +604,7 @@ function LazyVideo({ src, className, ...props }: React.VideoHTMLAttributes<HTMLV
           videoRef.current?.pause();
         }
       },
-      { threshold: 0.1, rootMargin: "500px 0px" },
+      { threshold: 0.1, rootMargin: "1200px 0px" },
     );
 
     observer.observe(videoNode);
@@ -644,7 +644,7 @@ function LazyVideo({ src, className, ...props }: React.VideoHTMLAttributes<HTMLV
       muted
       loop
       playsInline
-      preload={shouldLoad ? "metadata" : "none"}
+      preload={shouldLoad ? "auto" : "none"}
       {...props}
     />
   );
@@ -798,6 +798,10 @@ export default function Component() {
   const transcribeVideoUrl = "/videos/transcribe.mp4"; // 实时转写视频
   const summaryVideoUrl = "/videos/summary.mp4"; // 智能总结视频
   const knowledgeVideoUrl = "/videos/knowledge.mp4"; // 知识库视频
+  const heroVideoPoster = imgImage135;
+  const transcribeVideoPoster = imgMeeting;
+  const summaryVideoPoster = imgImage112;
+  const knowledgeVideoPoster = imgSales;
   const [activeScenario, setActiveScenario] = useState(0);
   const scenarios = [
     {
@@ -1002,6 +1006,7 @@ export default function Component() {
           <Video3D className="w-full aspect-video sm:aspect-[16/10] lg:aspect-[21/9] min-[1320px]:w-[1280px] min-[1320px]:h-[720px] min-[1320px]:aspect-auto relative rounded-[12px] md:rounded-[32px] shrink-0 md:aspect-video xl:aspect-video" data-name="80+ 海量智能模板，让每一次记录都更省时间">
             <HeroVideo
               className="absolute inset-0 w-full h-full object-cover rounded-[12px] md:rounded-[32px] z-[1]"
+              poster={heroVideoPoster}
               src={heroVideoUrl}
             />
             <div aria-hidden="true" className="absolute border-[4px] md:border-8 border-solid border-white inset-[-4px] md:inset-[-8px] pointer-events-none rounded-[12px] md:rounded-[40px] shadow-[0px_6px_44px_0px_rgba(0,0,0,0.07)]" />
@@ -1089,6 +1094,7 @@ export default function Component() {
           <Video3D className="w-full max-w-[682px] md:max-w-none xl:max-w-[682px] relative rounded-[12px] md:rounded-[23.444px] shrink-0 md:order-1 xl:order-2" data-name="80+ 海量智能模板，让每一次记录都更省时间" hoverScale={1}>
             <LazyVideo
               className="w-full h-auto object-contain rounded-[12px] md:rounded-[23.444px] z-[1]"
+              poster={transcribeVideoPoster}
               src={transcribeVideoUrl}
             />
           </Video3D>
@@ -1152,6 +1158,7 @@ export default function Component() {
                 <div className="w-full h-auto relative rounded-[12px] md:rounded-[32px] shrink-0">
                   <LazyVideo
                     className="w-full h-auto object-contain rounded-[12px] md:rounded-[32px] relative z-[1]"
+                    poster={summaryVideoPoster}
                     src={summaryVideoUrl}
                   />
                 </div>
@@ -1166,6 +1173,7 @@ export default function Component() {
           <Video3D className="w-full max-w-[682px] md:max-w-none xl:max-w-[682px] relative rounded-[12px] md:rounded-[22px] shrink-0" data-name="80+ 海量智能模板，让每一次记录都更省时间">
             <LazyVideo
               className="w-full h-auto object-contain rounded-[12px] md:rounded-[22px] relative z-[1]"
+              poster={knowledgeVideoPoster}
               src={knowledgeVideoUrl}
             />
           </Video3D>

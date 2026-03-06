@@ -587,28 +587,76 @@ function ScrollReveal({ children, className, delay = 0, direction = "up" }: { ch
 
 function LazyVideo({ src, className, ...props }: React.VideoHTMLAttributes<HTMLVideoElement>) {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [shouldLoad, setShouldLoad] = useState(false);
+  const [isInView, setIsInView] = useState(false);
 
   useEffect(() => {
+    const videoNode = videoRef.current;
+    if (!videoNode) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          // 当视频进入视口时播放
-          videoRef.current?.play().catch(() => {
-            // 忽略自动播放失败的错误（通常是因为未静音或策略限制，但这里我们是muted的）
-          });
+          setShouldLoad(true);
+          setIsInView(true);
         } else {
-          // 离开视口时暂停，节省资源
+          setIsInView(false);
           videoRef.current?.pause();
         }
       },
-      { threshold: 0.1 } // 只要进入 10% 就开始加载/播放
+      { threshold: 0.1, rootMargin: "500px 0px" },
     );
 
-    if (videoRef.current) {
-      observer.observe(videoRef.current);
-    }
-
+    observer.observe(videoNode);
     return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!shouldLoad || !isInView) return;
+    const videoNode = videoRef.current;
+    if (!videoNode) return;
+
+    videoNode.play().catch(() => {});
+  }, [shouldLoad, isInView]);
+
+  useEffect(() => {
+    if (!shouldLoad) return;
+    const videoNode = videoRef.current;
+    if (!videoNode) return;
+
+    const handleCanPlay = () => {
+      if (!isInView) return;
+      videoNode.play().catch(() => {});
+    };
+
+    videoNode.addEventListener("canplay", handleCanPlay);
+    return () => {
+      videoNode.removeEventListener("canplay", handleCanPlay);
+    };
+  }, [shouldLoad, isInView]);
+
+  return (
+    <video
+      ref={videoRef}
+      src={shouldLoad ? src : undefined}
+      className={className}
+      autoPlay
+      muted
+      loop
+      playsInline
+      preload={shouldLoad ? "metadata" : "none"}
+      {...props}
+    />
+  );
+}
+
+function HeroVideo({ src, className, ...props }: React.VideoHTMLAttributes<HTMLVideoElement>) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const videoNode = videoRef.current;
+    if (!videoNode) return;
+    videoNode.play().catch(() => {});
   }, []);
 
   return (
@@ -616,10 +664,11 @@ function LazyVideo({ src, className, ...props }: React.VideoHTMLAttributes<HTMLV
       ref={videoRef}
       src={src}
       className={className}
+      autoPlay
       muted
       loop
       playsInline
-      preload="none" // 关键：默认不加载，直到播放时才加载
+      preload="auto"
       {...props}
     />
   );
@@ -951,13 +1000,8 @@ export default function Component() {
             <BackgroundImage />
           </div>
           <Video3D className="w-full aspect-video sm:aspect-[16/10] lg:aspect-[21/9] min-[1320px]:w-[1280px] min-[1320px]:h-[720px] min-[1320px]:aspect-auto relative rounded-[12px] md:rounded-[32px] shrink-0 md:aspect-video xl:aspect-video" data-name="80+ 海量智能模板，让每一次记录都更省时间">
-            <video
-              autoPlay
-              muted
+            <HeroVideo
               className="absolute inset-0 w-full h-full object-cover rounded-[12px] md:rounded-[32px] z-[1]"
-              loop
-              playsInline
-              preload="auto"
               src={heroVideoUrl}
             />
             <div aria-hidden="true" className="absolute border-[4px] md:border-8 border-solid border-white inset-[-4px] md:inset-[-8px] pointer-events-none rounded-[12px] md:rounded-[40px] shadow-[0px_6px_44px_0px_rgba(0,0,0,0.07)]" />

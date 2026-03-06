@@ -625,46 +625,6 @@ function LazyVideo({ src, className, ...props }: React.VideoHTMLAttributes<HTMLV
   );
 }
 
-function LazyVideo({ src, className, ...props }: React.VideoHTMLAttributes<HTMLVideoElement>) {
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          // 当视频进入视口时播放
-          videoRef.current?.play().catch(() => {
-            // 忽略自动播放失败的错误
-          });
-        } else {
-          // 离开视口时暂停，节省资源
-          videoRef.current?.pause();
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (videoRef.current) {
-      observer.observe(videoRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
-  return (
-    <video
-      ref={videoRef}
-      src={src}
-      className={className}
-      muted
-      loop
-      playsInline
-      preload="none"
-      {...props}
-    />
-  );
-}
-
 const reviewsData = [
   {
     review: "\u201c会议记录从2小时缩短到5分钟，关键信息一目了然，团队协作效率提升了3倍\u201d",
